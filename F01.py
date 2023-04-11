@@ -24,7 +24,6 @@ login = False #Mengetahui status login
 f = jadi_array('user.csv',3,3) #Memanggil function yang mengambil file 'user,csv' dan me assign dengan ukuran 3 baris dan 3 kolom atas nama f
 bool = True
 while bool : 
-    print(">>> login")
     username = input("Username: ")  
     password = input("Password: ")
     if username == f[1][0] or username == f[2][0] : #Cek apakah username valid
