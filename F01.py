@@ -1,4 +1,3 @@
-import F03
 def jadi_array(nama_file, row, collumns):
     f = [[None for j in range(collumns)] for i in range(row)]
     i = 0
