@@ -1,3 +1,4 @@
+import F03
 def jadi_array(nama_file, row, collumns):
     f = [[None for j in range(collumns)] for i in range(row)]
     i = 0
@@ -19,16 +20,21 @@ def jadi_array(nama_file, row, collumns):
     return f
 
 def login():
-    status = False
-    f = jadi_array('user.csv',3,101) #Memanggil function yang mengambil file 'user,csv' dan me assign dengan ukuran 3 baris dan 3 kolom atas nama f
+    f = jadi_array('user.csv',101,3) #Memanggil function yang mengambil file 'user,csv' dan me assign dengan ukuran 101 baris dan 3 kolom atas nama f
+    print(f)
     username = input("Username: ")  
     password = input("Password: ")
-    if username == f[1][0] or username == f[2][0] : #Cek apakah username valid
-        if password == f[1][1] or password == f[2][1] : # Cek apakah password valid
-            print(f"Selamat datang, {username} !")
+    i = 1
+    bool = False
+    while i <= 101 and bool == False :
+        if username == f[i][0] :    #Cek apakah username valid
+            if password == f[i][1] :    # Cek apakah password valid
+                print(f"Selamat datang, {username} !")
+                bool = True
+            else :
+                print("Password salah!")
+                bool = True
         else :
-            print("Password salah!")
-    else :
-        print("Username tidak terdaftar!")
+            print("Username tidak terdaftar!")
     
     return
