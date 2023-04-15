@@ -1,7 +1,7 @@
-from csvtolist import csv_parsing
+from csvtolist import csv_to_list
 
 def login(): # Fungsi login
-    CSV_List = csv_parsing("user.csv", 1001, 3) #Memanggil function yang mengambil file 'user.csv' dan melakukan assign dengan ukuran 1001 baris dan 3 kolom atas nama CSV_list
+    CSV_List = csv_to_list("user.csv", 1001, 3) #Memanggil function yang mengambil file 'user.csv' dan melakukan assign dengan ukuran 1001 baris dan 3 kolom atas nama CSV_list
     username = input("Username: ")  
     password = input("Password: ")
     i = 1
@@ -12,9 +12,10 @@ def login(): # Fungsi login
                 print(f"Selamat datang, {username}!")
                 print("Masukkan command “help” untuk daftar command yang dapat kamu panggil.")
                 login_status = True
+                return login_status
             else :
                 print("Password salah!")
-                login_status = True
+                break
         else :
             print("Username tidak terdaftar!")
             break
