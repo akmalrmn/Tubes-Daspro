@@ -12,10 +12,12 @@ def login(): # Fungsi login
                 print(f"Selamat datang, {username}!")
                 print("Masukkan command “help” untuk daftar command yang dapat kamu panggil.")
                 login_status = True
-                return login_status
             else :
                 print("Password salah!")
+                return login_status, i, CSV_List
                 break
         else :
             print("Username tidak terdaftar!")
+            return login_status, i, CSV_List
             break
+    return login_status, i, CSV_List
