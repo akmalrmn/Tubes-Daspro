@@ -15,25 +15,23 @@ def jadi_array(nama_file, row, collumns):
                         i += 1
                 else:  # tambahkan karakter ke nilai yang sedang dibaca
                     value += char
-
     return f
 
 def login():
-    f = jadi_array('user.csv',101,3) #Memanggil function yang mengambil file 'user,csv' dan me assign dengan ukuran 101 baris dan 3 kolom atas nama f
-    print(f)
+    f = jadi_array("user.csv",101,3) #Memanggil function yang mengambil file 'user,csv' dan me assign dengan ukuran 101 baris dan 3 kolom atas nama f
     username = input("Username: ")  
     password = input("Password: ")
     i = 1
-    bool = False
-    while i <= 101 and bool == False :
+    login_status = False
+    while i <= 101 and login_status == False :
         if username == f[i][0] :    #Cek apakah username valid
             if password == f[i][1] :    # Cek apakah password valid
-                print(f"Selamat datang, {username} !")
-                bool = True
+                print(f"Selamat datang, {username}!")
+                print("Masukkan command “help” untuk daftar command yang dapat kamu panggil.")
+                login_status = True
             else :
                 print("Password salah!")
-                bool = True
+                login_status = True
         else :
             print("Username tidak terdaftar!")
-    
-    return
+            break
