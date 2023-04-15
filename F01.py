@@ -4,8 +4,8 @@ def jadi_array(nama_file, row, collumns): # Fungsi parsing CSV statis
     j = 0
     value = ""
     with open(nama_file, 'r') as file:
-        for collumns in file:
-            for char in collumns:  # loop setiap karakter pada baris
+        for row in file:
+            for char in row:  # loop setiap karakter pada baris
                 if char == ";" or char == '\n':  # jika ditemukan titik koma, maka simpan nilai dalam array f
                     CSV_List[i][j] = value
                     value = ""
@@ -18,14 +18,14 @@ def jadi_array(nama_file, row, collumns): # Fungsi parsing CSV statis
     return CSV_List
 
 def login(): # Fungsi login
-    f = jadi_array("user.csv", 1001, 3) #Memanggil function yang mengambil file 'user.csv' dan melakukan assign dengan ukuran 1001 baris dan 3 kolom atas nama f
+    CSV_List = jadi_array("user.csv", 1001, 3) #Memanggil function yang mengambil file 'user.csv' dan melakukan assign dengan ukuran 1001 baris dan 3 kolom atas nama f
     username = input("Username: ")  
     password = input("Password: ")
     i = 1
     login_status = False
     while i <= 1001 and login_status == False :
-        if username == f[i][0] :    #Cek apakah username valid
-            if password == f[i][1] :    # Cek apakah password valid
+        if username == CSV_List[i][0] :    #Cek apakah username valid
+            if password == CSV_List[i][1] :    # Cek apakah password valid
                 print(f"Selamat datang, {username}!")
                 print("Masukkan command “help” untuk daftar command yang dapat kamu panggil.")
                 login_status = True
