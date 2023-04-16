@@ -1,7 +1,6 @@
 from csvtolist import csv_to_list
 
-def login(): # Fungsi login
-    CSV_List = csv_to_list("user.csv", 1001, 3) #Memanggil function yang mengambil file 'user.csv' dan melakukan assign dengan ukuran 1001 baris dan 3 kolom atas nama CSV_list
+def login(CSV_List): # Fungsi login
     username = input("Username: ")  
     password = input("Password: ")
     i = 1
