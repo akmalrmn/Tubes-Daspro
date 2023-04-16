@@ -4,7 +4,7 @@ def list_to_csv(my_list, filename):
     for sublist in my_list:
         line = ''
         for element in sublist:
-            line += str(element) + ','
+            line += str(element) + ';'
         csv_string += line[:-1] + '\n'
 
     # Menyimpan string ke dalam file CSV
