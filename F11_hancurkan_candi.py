@@ -38,3 +38,5 @@ def hancurkan_candi():
 
     # Mengubah list menjadi file candi.csv
     listtocsv.list_to_csv(list_candi,'candi.csv')
+    
+    return
