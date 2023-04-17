@@ -5,7 +5,7 @@ def login(CSV_List): # Fungsi login
     password = input("Password: ")
     i = 1
     login_status = False
-    while i <= 1001 and login_status == False :
+    while i <= 1000 and login_status == False :
         if username == CSV_List[i][0] :    #Cek apakah username valid
             if password == CSV_List[i][1] :    # Cek apakah password valid
                 print(f"Selamat datang, {username}!")
