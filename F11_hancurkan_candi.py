@@ -2,13 +2,13 @@ def hancurkan_candi():
     import csvtolist
     import listtocsv
 
-    # Mengubah file candi.csv menjadi array
+    # Mengubah file candi.csv menjadi list
     list_candi = csvtolist.csv_to_list('candi.csv',101,5)
 
     # Input id candi 
     id_candi = input('Masukan ID candi: ')
 
-    # Cek apakah ada candi dengan id tersebut dan declare atas nama valid
+    # Cek apakah ada candi dengan ID tersebut dan declare atas nama valid
     valid = False
     for candi in list_candi:
         if candi[0] == id_candi:
@@ -33,5 +33,8 @@ def hancurkan_candi():
                 else :
                     loop = False
 
+    # Menghapus elemen pada list dengan ID candi tersebut
     list_candi = list_candi[:row_num] + list_candi[(row_num+1):]
+
+    # Mengubah list menjadi file candi.csv
     listtocsv.list_to_csv(list_candi,'candi.csv')
