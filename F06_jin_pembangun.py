@@ -83,3 +83,5 @@ def jin_pembangun():
 
     # Menggabungkan list bahan bangunan ke dalam file bahan bangunan
     listtocsv.list_to_csv(arr_bahan_bangunan, 'bahan_bangunan.csv')
+    
+    return
