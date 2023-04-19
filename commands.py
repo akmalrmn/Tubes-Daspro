@@ -3,6 +3,7 @@ from F02_logout import logout
 from F07_jin_pengumpul import kumpul
 from F03_summonjin import summonjin
 from F04_hilangkanjin import hapus_jin
+from F05_ubahjin import ubahjin
 
 def run(masukan, login_status, idx_usn, csvlist, idx_rng, csvlist2):
     if login_status: # User sudah melakukan login
@@ -18,6 +19,8 @@ def run(masukan, login_status, idx_usn, csvlist, idx_rng, csvlist2):
           csvlist = summonjin(csvlist, idx_usn)
         elif masukan == "hapusjin":
           csvlist, csvlist2 = hapus_jin(csvlist, csvlist2, idx_usn)
+        elif masukan == "ubahjin":
+          csvlist = ubahjin(csvlist, idx_usn)
         else: # Masukan tidak sesuai dengan opsi yang ada
           print("Opsi tidak tersedia")
     elif not(login_status): # user belum melakukan login
