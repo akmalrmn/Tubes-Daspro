@@ -1,10 +1,5 @@
-def hapus_jin():
+def hapus_jin(user, candi, idx_usn):
     import csvtolist
-
-    # Convert array dari csv
-    arr_candi = csvtolist.csv_to_list('candi.csv',101,5)
-    arr_user = csvtolist.csv_to_list('user.csv',1003,3)
-    arr_bahan_bangunan = csvtolist.csv_to_list('bahan_bangunan.csv',101,3)
 
     # fungsi buat hitung len array
     def panjang_array(array):
@@ -60,20 +55,21 @@ def hapus_jin():
             arr[i] = array[i]
         return arr
 
-    jin = input("Masukkan username jin: ")
-    for i in range (panjang_array(arr_user)):
-        if jin == arr_user[i][0]:
-            confirm = input(f"Apakah anda yakin ingin menghapus jin dengan username {jin} (Y/N)? ")
-            if confirm == "Y":
-                arr_user = array_bersih(geser_arr_user(hapus_jin(jin, arr_user)))
-                arr_candi = array_bersih(geser_arr_candi(hapus_candi_jin(jin, arr_candi)))
-                print("Jin telah berhasil dihapus dari alam gaib.")
-                break
-            else:
-                print("okede, sip")
-                break
+    if user[idx_usn][0] == "Bondowoso":
+      jin = input("Masukkan username jin: ")
+      for i in range (panjang_array(user)):
+          if jin == user[i][0]:
+              confirm = input(f"Apakah anda yakin ingin menghapus jin dengan username {jin} (Y/N)? ")
+              if confirm == "Y":
+                  user = array_bersih(geser_arr_user(hapus_jin(jin, user)))
+                  candi = array_bersih(geser_arr_candi(hapus_candi_jin(jin, candi)))
+                  print("Jin telah berhasil dihapus dari alam gaib.")
+                  break
+              else:
+                  print("okede, sip")
+                  break
+      else:
+          print("Tidak ada jin dengan username tersebut.")
     else:
-        print("Tidak ada jin dengan username tersebut.")
-    return
-
-hapus_jin()
+      print("Program ini hanya dapat diakses oleh Bondowoso")
+    return user, candi
