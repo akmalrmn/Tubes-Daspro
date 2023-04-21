@@ -1,23 +1,25 @@
 from csvtolist import csv_to_list
 
-def login(CSV_List): # Fungsi login
-    username = input("Username: ")  
-    password = input("Password: ")
-    i = 1
-    login_status = False
-    while i <= 1000 and login_status == False :
-        if username == CSV_List[i][0] :    #Cek apakah username valid
-            if password == CSV_List[i][1] :    # Cek apakah password valid
-                print(f"Selamat datang, {username}!")
-                print("Masukkan command “help” untuk daftar command yang dapat kamu panggil.")
-                login_status = True
-                break
-            else :
-                print("Password salah!")
-                return login_status, i, CSV_List
-                break
-        i += 1
-    if login_status == False:
-        print("Username tidak terdaftar!")
+def login(CSV_List, login_status, idx_usn): # Fungsi login
+    if login_status: # sudah login
+        print("Login gagal!")
+        print(f"Anda telah login dengan username {CSV_List[idx_usn][0]}, silahkan lakukan “logout” sebelum melakukan login kembali.")
+    else: # belum login
+        username = input("Username: ") # input useername
+        password = input("Password: ") # input password
+        i = 1
+        login_status = False
+        while i <= 1000 and login_status == False : # Akan melakukan loop hingga login berhasil atau sudah membaca semua baris pada list user
+            if username == CSV_List[i][0] :    #Cek apakah username valid
+                if password == CSV_List[i][1] :    # Cek apakah password valid
+                    print(f"Selamat datang, {username}!")
+                    print("Masukkan command “help” untuk daftar command yang dapat kamu panggil.")
+                    login_status = True # indikasi berhasil login
+                    break # keluar dari while loop
+                else :
+                    print("Password salah!")
+                    break
+            i += 1
+        else: # gagal login
+            print("Username tidak terdaftar!")
         return login_status, i, CSV_List
-    return login_status, i, CSV_List
