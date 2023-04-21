@@ -28,7 +28,7 @@ def hapus_jin(user, candi, idx_usn):
     # habis dihapus, data yang dikanannya geser ke kiri
     # contoh [1,"",3,None] --> [1,3,None]
     def geser_arr_user(array_user):
-        arr = [[None for _ in range(3)] for _ in range (1003)]
+        arr = [[None for _ in range(3)] for _ in range (1001)]
         j = 0
         for i in range (panjang_array(array_user)):
             if array_user[i][0] != "":
