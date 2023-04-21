@@ -61,8 +61,8 @@ def hapus_jin(user, candi, idx_usn):
           if jin == user[i][0]:
               confirm = input(f"Apakah anda yakin ingin menghapus jin dengan username {jin} (Y/N)? ")
               if confirm == "Y":
-                  user = array_bersih(geser_arr_user(hapus_jin(jin, user)))
-                  candi = array_bersih(geser_arr_candi(hapus_candi_jin(jin, candi)))
+                  user = geser_arr_user(hapus_jin(jin, user))
+                  candi = geser_arr_candi(hapus_candi_jin(jin, candi))
                   print("Jin telah berhasil dihapus dari alam gaib.")
                   break
               else:
