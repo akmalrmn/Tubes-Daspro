@@ -46,20 +46,32 @@ def banyak_air_digunakan():
             return(banyak_air_digunakan)
             break
 
-# untuk membuat list baru yang berisi harga tiap candi
-arr_harga = []
-for baris in arr_candi[1:]:
-    if baris[2] != None and baris[3] != None and baris[4] != None:
-        harga = 1000 * int(baris[2]) + 1500 * int(baris[3]) + 7500 * int(baris[4]) # harga = 1000 * Pasir + 1500 * Batu + 7500 * Air
-        arr_harga.append(harga)
+def id_candi_termahal(arr_candi):
+    id_termahal = '-'
+    harga_termahal = '-'
+    for baris in arr_candi[1:]:
+        if baris[2] is None:
+            return f"{id_termahal} (Rp {harga_termahal})"
+            break
+        else:
+            harga = 1000 * int(baris[2]) + 1500 * int(baris[3]) + 7500 * int(baris[4])
+            if harga_termahal == '-' or harga > harga_termahal:
+                harga_termahal = harga
+                id_termahal = baris[0]
 
-# harus menggunakan pengkondisian karena kalau array kosong maka akan error fungsi max atau min nya
-if count_rows(arr_harga) > 0:
-    candi_termahal = max(arr_harga)
-    candi_termurah = min(arr_harga)
-else:
-    candi_termahal = '-'
-    candi_termurah = '-'
+def id_candi_termurah(arr_candi):
+    id_termurah = '-'
+    harga_termurah = '-'
+    for baris in arr_candi[1:]:
+        if baris[2] is None:
+            return f"{id_termurah} (Rp {harga_termurah})"
+            break
+        else:
+            harga = 1000 * int(baris[2]) + 1500 * int(baris[3]) + 7500 * int(baris[4])
+            if harga_termurah == '-' or harga < harga_termurah:
+                harga_termurah = harga
+                id_termurah = baris[0]
+
 
 def laporancandi():
     if username == 'Bondowoso':
@@ -67,8 +79,8 @@ def laporancandi():
         print('Total Pasir yang digunakan: ', banyak_pasir_digunakan())
         print('Total Batu yang digunakan: ', banyak_batu_digunakan())
         print('Total Air yang digunakan: ', banyak_air_digunakan())
-        print(f'ID Candi Termahal: (Rp {candi_termahal})')
-        print(f'ID Candi Termurah: (Rp {candi_termurah})')
+        print(f'ID Candi Termahal: ', id_candi_termahal(arr_candi))
+        print(f'ID Candi Termurah: ', id_candi_termurah(arr_candi))
     else:
         print('Laporan candi hanya dapat diakses oleh akun Bandung Bondowoso.')
 
