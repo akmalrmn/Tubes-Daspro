@@ -1,3 +1,9 @@
+def count_rows(arr):
+    row_count = 0
+    for row in arr:
+        row_count += 1
+    return row_count
+
 from time import sleep
 from animasi import animasijin
 
@@ -36,7 +42,7 @@ def summonjin(CSV_List, i):
                         while bool_password:
                             password_jin = input('Masukkan password jin: ')
                             print()
-                            if len(password_jin) > 4 and len(password_jin) < 26:
+                            if count_rows(password_jin) > 4 and count_rows(password_jin) < 26:
                                 sleep(0.5)
                                 print(f'''Mengumpulkan sesajen...
                                 Menyerahkan sesajen...
@@ -67,7 +73,7 @@ def summonjin(CSV_List, i):
                         while bool_password:
                             password_jin = input('Masukkan password jin: ')
                             print()
-                            if len(password_jin) > 4 and len(password_jin) < 26:
+                            if count_rows(password_jin) > 4 and count_rows(password_jin) < 26:
                                 sleep(0.5)
                                 print(f'''Mengumpulkan sesajen...
                                 Menyerahkan sesajen...
