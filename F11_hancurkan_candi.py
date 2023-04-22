@@ -44,5 +44,6 @@ def hancurkan_candi(arr_candi, idx_usn, user):
                 
                 print("Candi berhasil dihancurkan")
     else:
+        arr_candi_baru = arr_candi
         print("Program ini hanya dapat diakses oleh Bondowoso")
     return arr_candi_baru
