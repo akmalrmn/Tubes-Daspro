@@ -4,11 +4,21 @@ def count_rows(arr):
         row_count += 1
     return row_count
 
+def count_kata_jin(CSV_List):
+    count_kata_jin = 0
+    for baris in CSV_List:
+        if 'Pengumpul' in baris[2] or 'Pembangun' in baris[2]:
+            count_kata_jin += 1
+    return count_kata_jin
+
 from time import sleep
 from animasi import animasijin
 
 def summonjin(CSV_List, i):
-    if CSV_List[i][0] == "Bondowoso":
+    if count_kata_jin(CSV_List) >= 102:
+        print('Jumlah Jin telah maksimal! (100 jin). Bandung tidak dapat men-summon lebih dari itu')
+        return None
+    elif CSV_List[i][0] == "Bondowoso":
         print('''Jenis jin yang dapat dipanggil:
         (1) Pengumpul - Bertugas mengumpulkan bahan bangunan
         (2) Pembangun - Bertugas membangun candi
