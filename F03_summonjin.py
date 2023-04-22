@@ -42,6 +42,7 @@ def summonjin(CSV_List, i):
                                 Menyerahkan sesajen...
                                 Membacakan mantra...
                                 Jin {username_jin} berhasil dipanggil!''')
+                                CSV_List += [username_jin,password_jin,'Pengumpul']
                                 print()
                                 animasijin()
                                 bool_password = False
@@ -72,6 +73,7 @@ def summonjin(CSV_List, i):
                                 Menyerahkan sesajen...
                                 Membacakan mantra...
                                 Jin {username_jin} berhasil dipanggil!''')
+                                CSV_List += [username_jin,password_jin,'Pembangun']
                                 print()
                                 animasijin()
                                 bool_password = False
