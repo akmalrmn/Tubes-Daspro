@@ -1,4 +1,5 @@
 def hancurkan_candi(arr_candi, idx_usn, user):
+    arr_candi_baru = arr_candi
     if user[idx_usn][0] == "Bondowoso":
         # Input id candi 
         id_candi = input('Masukan ID candi: ')
@@ -8,7 +9,6 @@ def hancurkan_candi(arr_candi, idx_usn, user):
         for candi in arr_candi:
             if candi[0] == id_candi:
                 valid = True
-        
         # Algoritma Hancurkan_candi
         if not valid :
             print('Tidak ada candi dengan ID tersebut.')        
@@ -40,10 +40,7 @@ def hancurkan_candi(arr_candi, idx_usn, user):
                             kolom += 1
                     if i != row_num :
                         baris += 1
-                        
-                
                 print("Candi berhasil dihancurkan")
     else:
-        arr_candi_baru = arr_candi
         print("Program ini hanya dapat diakses oleh Bondowoso")
     return arr_candi_baru
