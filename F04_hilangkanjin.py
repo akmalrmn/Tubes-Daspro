@@ -51,7 +51,7 @@ def hapus_jin(user, candi, idx_usn):
     def array_bersih(array):
         if array == "user":
             arr = [[None for j in range(3)] for i in range (1001)]
-        else:
+        else: # candi
             arr = [[None for j in range(5)] for i in range (1001)]
         for i in range (panjang_array(array)):
             arr[i] = array[i]
