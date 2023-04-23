@@ -7,7 +7,7 @@ def count_rows(arr):
 def count_kata_jin(CSV_List):
     count_kata_jin = 0
     for baris in CSV_List:
-        if baris[2] is not None and ('Pengumpul' in baris[2] or 'Pembangun' in baris[2]):
+        if baris[2] is not None and (baris[2] == "Pengumpul" or baris[2] == 'Pembangun'):
             count_kata_jin += 1
     return count_kata_jin
 
