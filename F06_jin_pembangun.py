@@ -1,4 +1,4 @@
-import numpy as np
+import random
 from RNG import rand_nums2
 
 def jin_pembangun(idx_rng, bahan_bangunan, candi, user):
@@ -45,8 +45,7 @@ def jin_pembangun(idx_rng, bahan_bangunan, candi, user):
             idx += 1
     
     # Mengambil nama jin random dari list nama_jin
-    random_index = np.random.randint(banyak_jin_pembangun)
-    pembuat = nama_jin[random_index]
+    pembuat = random.choice(my_array)
 
     # Sisa candi yang perlu dibangun
     sisa_bangun_candi = 99 - banyak_candi
