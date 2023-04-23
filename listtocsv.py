@@ -1,4 +1,4 @@
-def list_to_csv(my_list, filename):
+def list_to_csv(my_list,path,filename):
     # Membuat string CSV dari list
     csv_string = ''
     for sublist in my_list:
@@ -8,5 +8,5 @@ def list_to_csv(my_list, filename):
         csv_string += line[:-1] + '\n'
 
     # Menyimpan string ke dalam file CSV
-    with open(filename, mode='w') as file:
+    with open(f'{path}/{filename}', 'w') as file:
         file.write(csv_string)
