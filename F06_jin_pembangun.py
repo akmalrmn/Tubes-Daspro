@@ -1,4 +1,4 @@
-import random
+import numpy as np
 from RNG import rand_nums2
 
 def jin_pembangun(idx_rng, bahan_bangunan, candi, user):
@@ -45,10 +45,11 @@ def jin_pembangun(idx_rng, bahan_bangunan, candi, user):
             idx += 1
     
     # Mengambil nama jin random dari list nama_jin
-    pembuat = random.choice(my_array)
+    random_index = np.random.randint(banyak_jin_pembangun)
+    pembuat = nama_jin[random_index]
 
     # Sisa candi yang perlu dibangun
-    sisa_bangun_candi = 99 - banyak_candi
+    sisa_bangun_candi = 100 - banyak_candi
 
     # Algoritma
     if sisa_pasir < 0 or sisa_batu < 0 or sisa_air < 0 :
@@ -56,25 +57,27 @@ def jin_pembangun(idx_rng, bahan_bangunan, candi, user):
     else :
         if banyak_candi == 100 :
             print('Candi berhasil dibangun.\nSisa candi yang perlu dibangun: 0.')
-            bahan_bangunan[1][2] = sisa_pasir
-            bahan_bangunan[2][2] = sisa_batu
-            bahan_bangunan[3][2] = sisa_air
         else :
             print(f'Candi berhasil dibangun.\nSisa candi yang perlu dibangun: {sisa_bangun_candi}.')
-            bahan_bangunan[1][2] = sisa_pasir
-            bahan_bangunan[2][2] = sisa_batu
-            bahan_bangunan[3][2] = sisa_air
+
+        # Mengubah jumlah pasir,batu,dan air, pada array bahan_bangunan karena candi berhasil dibangun
+        bahan_bangunan[1][2] = sisa_pasir
+        bahan_bangunan[2][2] = sisa_batu
+        bahan_bangunan[3][2] = sisa_air
     
-
-
     # Membuat array untuk ditambahkan ke dalam file
     if banyak_candi < 100 :
         # Menggabungkan list ke dalam file candi
         candii_baru = [id,pembuat,pasir_dibutuhkan,batu_dibutuhkan,air_dibutuhkan]
-        with open('candi.csv', 'a') as file:
-            row = ''
-            for item in candii_baru:
-                row += str(item) + ';'
-            file.write(row[:-1] + '\n')
+        idx = 0
+        while idx < 101 :
+            if candi[idx][0] == None:
+                candi[idx] = candii_baru
+                idx = 101
+            idx += 1
+
+    # Jika banyak candi sudah 100 maka candi yang sudah dibuat tidak disimpan
+    else :
+        candii_baru = candi
 
     return idx_rng, bahan_bangunan, candii_baru, user, sisa_bangun_candi
