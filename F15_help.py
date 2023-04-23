@@ -40,7 +40,7 @@ def Help(login_status, idx_usn, user):
   #kalau bukan Bondowoso atau Roro, artinya username tsb adalah Jin
   else:
       for baris in user: # dilakukan scanning kesesuaian input username dengan data username di array f
-        if baris[0] == username: # memeriksa mulai dari baris pertama dan kolom ke nol (kolom username)
+        if baris[0] == user[idx_usn][0]: # memeriksa mulai dari baris pertama dan kolom ke nol (kolom username)
             if (baris[2]) == 'Pengumpul': # cek di array f, untuk username ini rolenya apa, kalau 'Pengumpul' maka print
               sleep(0.5)
               print('''=========== HELP ===========
