@@ -9,6 +9,7 @@ from F09_laporanjin import laporan_jin
 from F15_help import Help
 from F08_batch import batchbangun, batchkumpul
 from F11_hancurkan_candi import hancurkan_candi
+from F06_jin_pembangun import jin_pembangun
 
 def run(masukan, login_status, idx_usn, user, idx_rng, candi, bahan_bangunan):
     if login_status: # User sudah melakukan login
@@ -36,6 +37,8 @@ def run(masukan, login_status, idx_usn, user, idx_rng, candi, bahan_bangunan):
           bahan_bangunan, idx_rng = batchbangun(idx_rng, bahan_bangunan, user, idx_usn, candi)
         elif masukan == "hancurkancandi":
           candi = hancurkan_candi(candi, idx_usn, user)
+        elif masukan == "bangun":
+          jin_pembangun(idx_rng, bahan_bangunan, candi, user)
         else: # Masukan tidak sesuai dengan opsi yang ada
           print(f"Opsi {masukan} tidak tersedia")
     elif not(login_status): # user belum melakukan login
