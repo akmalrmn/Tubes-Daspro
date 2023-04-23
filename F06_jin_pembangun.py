@@ -4,10 +4,11 @@ from RNG import rand_nums2
 def jin_pembangun(idx_rng, bahan_bangunan, candi, user):
     # Id dari candi yang dibangun
     id = 1
-    for i in range (101):
-        if candi[i][0] == None and i != 1:
-            id = int(candi[i-1][0]) + 1
-            break
+    if candi[1][0] != None :
+        for i in range (101):
+            if candi[i][0] == None :
+                id = int(candi[i-1][0]) + 1
+                break
 
     # Menghitung banyak candi
     banyak_candi = -1
