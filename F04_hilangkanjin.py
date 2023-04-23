@@ -1,8 +1,6 @@
 from time import sleep
 
 def hapus_jin(user, candi, idx_usn):
-    import csvtolist
-
     # fungsi buat hitung len array
     def panjang_array(array):
         i = 0
@@ -49,8 +47,7 @@ def hapus_jin(user, candi, idx_usn):
                 j += 1
         return arr
     
-    # fungsi buat bikin array gaada None-nya
-    # contoh yang awalnya [1,2,3,None] --> jadi [1,2,3]
+    # fungsi buat bikin array baru
     def array_bersih(array):
         if array == "user":
             arr = [[None for j in range(3)] for i in range (1001)]
@@ -61,27 +58,25 @@ def hapus_jin(user, candi, idx_usn):
         return arr
 
     if user[idx_usn][0] == "Bondowoso":
-      jin = input("Masukkan username jin: ")
-      for i in range (panjang_array(user)):
-          if jin == user[i][0]:
+        jin = input("Masukkan username jin: ")
+        for i in range (panjang_array(user)):
+            if jin == user[i][0]:
+                sleep(0.5)
+                confirm = input(f"Apakah anda yakin ingin menghapus jin dengan username {jin} (Y/N)? ")
+                if confirm == "Y":
+                    user = array_bersih(geser_arr_user(hapus_jin(jin, user)))
+                    candi = array_bersih(geser_arr_candi(hapus_candi_jin(jin, candi)))
+                    sleep(0.5)
+                    print()
+                    print(f"{jin} telah berhasil dihapus dari alam gaib.")
+                    break
+                else:
+                    sleep(0.5)
+                    print(f"{jin} tidak jadi dihapus.")
+                    break
+        else:
             sleep(0.5)
-            confirm = input(f"Apakah anda yakin ingin menghapus jin dengan username {jin} (Y/N)? ")
-            if confirm == "Y":
-                user = array_bersih(geser_arr_user(hapus_jin(jin, user)))
-                candi = array_bersih(geser_arr_candi(hapus_candi_jin(jin, candi)))
-                sleep(0.5)
-                print()
-                print("Jin telah berhasil dihapus dari alam gaib.")
-                break
-            else:
-                sleep(0.5)
-                print(f"Jin {jin} tidak jadi dihapus.")
-                break
-      else:
-        sleep(0.5)
-        print("Tidak ada jin dengan username tersebut.")
+            print(f"Tidak ada jin dengan username {jin}.")
     else:
-      print("Program ini hanya dapat diakses oleh Bondowoso")
-    print(candi)
-    print(len(candi))
+        print("Program ini hanya dapat diakses oleh Bondowoso")
     return user, candi
