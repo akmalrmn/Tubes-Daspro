@@ -1,5 +1,6 @@
+from time import sleep
+
 def laporan_jin(user, candi, bahan_bangunan, idx_usn):
-    import csvtolist
 
     def panjang(x):
         i = 0
@@ -118,15 +119,15 @@ def laporan_jin(user, candi, bahan_bangunan, idx_usn):
                 continue
         return jumlah
     if user[idx_usn][0] == "Bondowoso":
-      print(">>> laporanjin")
-      print(f"> Total Jin: {total_jin(user)}")
-      print(f"> Total Jin Pengumpul: {total_jin_pengumpul(user)}")
-      print(f"> Total Jin Pembangun: {total_jin_pembangun(user)}")
-      print(f"> Jin Terajin: {jin_terajin(user,candi)}")
-      print(f"> Jin Termalas: {jin_termalas(user,candi)}")
-      print(f"> Jumlah Pasir: {jumlah_pasir(bahan_bangunan)} unit")
-      print(f"> Jumlah Air: {jumlah_air(bahan_bangunan)} unit")
-      print(f"> Jumlah Batu: {jumlah_batu(bahan_bangunan)} unit")
+        sleep(1)
+        print(f"> Total Jin: {total_jin(user)}")
+        print(f"> Total Jin Pengumpul: {total_jin_pengumpul(user)}")
+        print(f"> Total Jin Pembangun: {total_jin_pembangun(user)}")
+        print(f"> Jin Terajin: {jin_terajin(user,candi)}")
+        print(f"> Jin Termalas: {jin_termalas(user,candi)}")
+        print(f"> Jumlah Pasir: {jumlah_pasir(bahan_bangunan)} unit")
+        print(f"> Jumlah Air: {jumlah_air(bahan_bangunan)} unit")
+        print(f"> Jumlah Batu: {jumlah_batu(bahan_bangunan)} unit")
     else:
       print("Program ini hanya dapat diakses oleh Bondowoso")
     return user, candi, bahan_bangunan

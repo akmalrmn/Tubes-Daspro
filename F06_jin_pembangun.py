@@ -78,4 +78,4 @@ def jin_pembangun(idx_rng, bahan_bangunan, candi, user):
                 row += str(item) + ';'
             file.write(row[:-1] + '\n')
 
-    return idx_rng, bahan_bangunan, candii_baru, user
+    return idx_rng, bahan_bangunan, candii_baru, user, sisa_bangun_candi

@@ -1,5 +1,8 @@
+from time import sleep
+
 def Help(login_status, idx_usn, user):
   if login_status == False : # mengacu pada kode di F01 yakni kalau sudah berhasil login maka login = True, kalau belum berhasil login artinya login = False
+      sleep(0.5)
       print('''=========== HELP ===========
   1. login
     Untuk masuk menggunakan akun
@@ -7,6 +10,7 @@ def Help(login_status, idx_usn, user):
     Untuk keluar dari program dan kembali ke terminal
   ''')
   elif user[idx_usn][0] == 'Bondowoso':
+      sleep(0.5)
       print('''=========== HELP ===========
   1. logout
     Untuk keluar dari akun yang digunakan sekarang
@@ -24,6 +28,7 @@ def Help(login_status, idx_usn, user):
     Untuk mengambil laporan candi untuk mengetahui progress pembangunan candi
   ''')
   elif user[idx_usn][0] == 'Roro':
+      sleep(0.5)
       print('''=========== HELP ===========
   1. logout
     Untuk keluar dari akun yang digunakan sekarang
@@ -37,6 +42,7 @@ def Help(login_status, idx_usn, user):
       for baris in user: # dilakukan scanning kesesuaian input username dengan data username di array f
         if baris[0] == username: # memeriksa mulai dari baris pertama dan kolom ke nol (kolom username)
             if (baris[2]) == 'Pengumpul': # cek di array f, untuk username ini rolenya apa, kalau 'Pengumpul' maka print
+              sleep(0.5)
               print('''=========== HELP ===========
   1. logout
     Untuk keluar dari akun yang digunakan sekarang
@@ -44,6 +50,7 @@ def Help(login_status, idx_usn, user):
     Untuk mengumpulkan resource candi
   ''')
             elif (baris[2]) == 'Pembangun': # cek di array f, untuk username tertentu ini rolenya apa
+              sleep(0.5)
               print('''=========== HELP ===========
   1. logout
     Untuk keluar dari akun yang digunakan sekarang

@@ -1,6 +1,6 @@
 def hancurkan_candi(arr_candi, idx_usn, user):
     arr_candi_baru = arr_candi
-    if user[idx_usn][0] == "Bondowoso":
+    if user[idx_usn][0] == "Roro":
         # Input id candi 
         id_candi = input('Masukan ID candi: ')
 
@@ -14,9 +14,7 @@ def hancurkan_candi(arr_candi, idx_usn, user):
             print('Tidak ada candi dengan ID tersebut.')        
         else :
             pilihan = input(f'Apakah anda yakin ingin menghancurkan candi ID: {id_candi} (Y/N)? ')
-            if pilihan == 'N' :
-                print("Candi gagal dihancurkan.")
-            elif pilihan == 'Y' :
+            if pilihan == 'Y' :
                 # cari baris candi dengan ID tersebut
                 loop = True
                 row_num = 0
@@ -29,7 +27,7 @@ def hancurkan_candi(arr_candi, idx_usn, user):
                         loop = False
 
                 # Membuat array baru tanpa element yang mau dihapus
-                arr_candi_baru = [[None for j in range(5)] for i in range (100)]
+                arr_candi_baru = [[None for j in range(5)] for i in range (101)]
                 baris = 0
                 kolom = 0
                 for i in range (101):
@@ -41,6 +39,9 @@ def hancurkan_candi(arr_candi, idx_usn, user):
                     if i != row_num :
                         baris += 1
                 print("Candi berhasil dihancurkan")
+            else:
+                print("Candi gagal dihancurkan.")
     else:
-        print("Program ini hanya dapat diakses oleh Bondowoso")
+        print("Program ini hanya dapat diakses oleh Roro")
+    print(arr_candi_baru, len(arr_candi_baru))
     return arr_candi_baru

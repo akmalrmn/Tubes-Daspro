@@ -1,19 +1,25 @@
-from F06_jin_pembangun import sisa_bangun_candi
+from animasi import animasiayam
+from time import  sleep
 
-def ayam_berkokok():
-  if sisa_bangun_candi <= 99:
-    print("""Kukuruyuk.. Kukuruyuk..
-
-Jumlah Candi: 99
-
-Selamat, Roro Jonggrang memenangkan permainan!
-
-*Bandung Bondowoso angry noise*
-Roro Jonggrang dikutuk menjadi candi.""")
+def ayam_berkokok(user, idx_usn, sisa_bangun_candi):
+  if user[idx_usn][0] == "Roro":
+    if sisa_bangun_candi <= 99: # jumlah candi <= 99
+      animasiayam()
+      print("Kukuruyuk.. Kukuruyuk..")
+      sleep(1)
+      print(f"Jumlah Candi: {sisa_bangun_candi}")
+      sleep(1)
+      print("Selamat, Roro Jonggrang memenangkan permainan!")
+      sleep(1.5)
+      print("*Bandung Bondowoso angry noise*")
+      sleep(0.5)
+      print("Roro Jonggrang dikutuk menjadi candi.")
+    else: # jumlah candi >= 100
+      animasiayam()
+      print("Kukuruyuk.. Kukuruyuk..")
+      sleep(1)
+      print(f"Jumlah Candi: {sisa_bangun_candi}")
+      sleep(1.5)
+      print("Yah, Bandung Bondowoso memenangkan permainan!")
   else:
-    print("""Kukuruyuk.. Kukuruyuk..
-
-Jumlah Candi: 100
-
-Yah, Bandung Bondowoso memenangkan permainan!
-""")
+    print("Program ini hanya dapat diakses oleh Roro")

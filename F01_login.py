@@ -1,5 +1,6 @@
 from csvtolist import csv_to_list
 from time import sleep
+from os import system
 
 def login(CSV_List, login_status, idx_usn): # Fungsi login
     if login_status: # sudah login
@@ -16,8 +17,13 @@ def login(CSV_List, login_status, idx_usn): # Fungsi login
                 if password == CSV_List[i][1] :    # Cek apakah password valid
                     sleep(0.5)
                     print()
-                    print(f"Selamat datang, {username}!")
-                    print("Masukkan command “help” untuk daftar command yang dapat kamu panggil.")
+                    system("cls")
+                    if CSV_List[i][2] == "Pengumpul" or CSV_List[i][2] == "Pembangun":
+                        print(f"🔥🔥🔥 Selamat datang, {username}! 🔥🔥🔥")
+                        print("Masukkan command “help” untuk daftar command yang dapat kamu panggil.")
+                    else:
+                        print(f"Selamat datang, {username}!")
+                        print("Masukkan command “help” untuk daftar command yang dapat kamu panggil.")
                     login_status = True # indikasi berhasil login
                     break # keluar dari while loop
                 else :

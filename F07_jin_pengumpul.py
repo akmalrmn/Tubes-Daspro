@@ -1,17 +1,18 @@
 from RNG import rand_nums
+from animasi import animasibahan
+from time import sleep
 
-def kumpul(list_candi, idx_rng):
-  increment = 0
-  print("Jin menemukan", end=" ")
-  for i in range(1, 4):
-    list_candi[i][2] += rand_nums[((idx_rng-1)*3)+i]
-    if i == 1:
-      list_candi[i][0] = "pasir"
-      print(rand_nums[((idx_rng-1)*3)+i], "pasir", end= " ")
-    if i ==2:
-      list_candi[i][0] = "batu"
-      print(rand_nums[((idx_rng-1)*3)+i], "batu", end=" ")
-    if i == 3:
-      list_candi[i][0] = "air"
-      print(rand_nums[((idx_rng-1)*3)+i], "air")
-  return list_candi
+def kumpul(bahan_bangunan, idx_rng, idx_usn, user):
+  if user[idx_usn][2] == "Pengumpul":
+    increment = 0
+    nama_bahan = [["pasir", 0], ["batu", 0], ["air", 0]]
+    for i in range(3):
+      bahan_bangunan[i+1][2] += rand_nums[idx_rng+i] # melakukan penambahan bahan dengan RNG
+      nama_bahan[i][1] = rand_nums[idx_rng+i]
+    animasibahan(nama_bahan[0][1], nama_bahan[1][1], nama_bahan[2][1])
+    sleep(0.5)
+    print(f"{user[idx_usn][0]} menemukan", nama_bahan[0][1], "pasir,", nama_bahan[1][1], "batu, dan", nama_bahan[2][1], "air")
+    idx_rng += 3
+  else:
+    print("Program ini hanya dapat diakses oleh jin Pengumpul")
+  return bahan_bangunan, idx_rng
