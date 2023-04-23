@@ -1,13 +1,13 @@
-import numpy as np
 from RNG import rand_nums2
+import random
 
 def jin_pembangun(idx_rng, bahan_bangunan, candi, user):
-    # Id dari candi yang dibangun
-    id = 1
+    # idd dari candi yang dibangun
+    idd = 1
     if candi[1][0] != None :
         for i in range (101):
             if candi[i][0] == None :
-                id = int(candi[i-1][0]) + 1
+                idd = int(candi[i-1][0]) + 1
                 break
 
     # Menghitung banyak candi
@@ -31,8 +31,8 @@ def jin_pembangun(idx_rng, bahan_bangunan, candi, user):
 
     # Menghitung banyak jin pembangun dalam array user
     banyak_jin_pembangun = 0
-    for user in user :
-        if user[2] == "jin_pembangun" :
+    for a in user :
+        if a[2] == "Pembangun" :
             banyak_jin_pembangun += 1
 
     # List nama jin pembangun candi
@@ -41,13 +41,13 @@ def jin_pembangun(idx_rng, bahan_bangunan, candi, user):
     for baris in user :
         if baris is None:
             return 0
-        elif baris[2] == "jin_pembangun" :
+        elif baris[2] == "Pembangun" :
             nama_jin[idx] = baris[0]
             idx += 1
     
     # Mengambil nama jin random dari list nama_jin
-    random_index = np.random.randint(banyak_jin_pembangun)
-    pembuat = nama_jin[random_index]
+    if idx != 0 :
+        pembuat = random.choice(nama_jin)
 
     # Sisa candi yang perlu dibangun
     sisa_bangun_candi = 100 - banyak_candi
@@ -69,7 +69,7 @@ def jin_pembangun(idx_rng, bahan_bangunan, candi, user):
     # Membuat array untuk ditambahkan ke dalam file
     if banyak_candi < 100 :
         # Menggabungkan list ke dalam file candi
-        candii_baru = [id,pembuat,pasir_dibutuhkan,batu_dibutuhkan,air_dibutuhkan]
+        candii_baru = [idd,pembuat,pasir_dibutuhkan,batu_dibutuhkan,air_dibutuhkan]
         idx = 0
         while idx < 101 :
             if candi[idx][0] == None:
