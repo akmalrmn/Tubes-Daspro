@@ -5,11 +5,9 @@ def count_rows(arr):
     return row_count
 
 def count_kata_jin(CSV_List):
-    if CSV_List is None:
-        return 0
     count_kata_jin = 0
     for baris in CSV_List:
-        if baris[2] == "Pengumpul" or baris[2] == 'Pembangun':
+        if baris[2] is not None and ('Pengumpul' in baris[2] or 'Pembangun' in baris[2]):
             count_kata_jin += 1
     return count_kata_jin
 
@@ -17,7 +15,7 @@ from time import sleep
 from animasi import animasijin
 
 def summonjin(CSV_List, i):
-    if count_kata_jin(CSV_List) == 100:
+    if count_kata_jin(CSV_List) > 101:
         print('Jumlah Jin telah maksimal! (100 jin). Bandung tidak dapat men-summon lebih dari itu')
         return None
     elif CSV_List[i][0] == "Bondowoso":
@@ -32,7 +30,7 @@ def summonjin(CSV_List, i):
             nomor_jin = input("Masukkan nomor jenis jin yang ingin dipanggil: ")
             sleep(0.5)
             if nomor_jin not in ['1', '2']:
-                print(f"Tidak ada jenis jin bernomor “{nomor_jin}”!")
+                print(f"Tidak ada jenis jin bernomor \“{nomor_jin}\”!")
                 print()
             elif nomor_jin == '1':
                 print()
@@ -43,9 +41,7 @@ def summonjin(CSV_List, i):
                     sleep(0.5)
                     username_jin = input('Masukkan username jin: ')
                     if username_jin in [row[0] for row in CSV_List]: #buat cara mengetahui apakah username_jin sudah ada di matriks
-                        sleep(0.5)
                         print(f'Username {username_jin} sudah diambil!')
-                        print()
                     else: #jika username_jin belum ada maka buat password
                         # buat loop sampai password memiliki len 5-25
                         bool_username_jin = False
@@ -59,7 +55,16 @@ def summonjin(CSV_List, i):
                                 Menyerahkan sesajen...
                                 Membacakan mantra...
                                 Jin {username_jin} berhasil dipanggil!''')
-                                CSV_List += [[username_jin,password_jin,'Pengumpul']]
+                                new_data = [username_jin,password_jin,'Pengumpul']
+                                indeks = None
+                                # Mengecek indeks baris paling kecil yang memiliki None untuk kemudian diganti dengan input summonjin yakni [username_jin,password_jin,'Pengumpul']
+                                for i, row in enumerate(CSV_List):
+                                    if row == [None, None, None]:
+                                        indeks = i
+                                        break
+                                # Mengganti baris pada indeks yang ditemukan dengan data baru
+                                if indeks is not None:
+                                    CSV_List[indeks] = new_data
                                 print()
                                 animasijin()
                                 bool_password = False
@@ -73,9 +78,7 @@ def summonjin(CSV_List, i):
                 while bool_username_jin:
                     username_jin = input('Masukkan username jin: ')
                     if username_jin in [row[0] for row in CSV_List]: #buat cara mengetahui apakah username_jin sudah ada di matriks
-                        sleep(0.5)
                         print(f'Username {username_jin} sudah diambil!')
-                        print()
                     else: #jika username_jin belum ada maka buat password
                         # buat loop sampai password memiliki len 5-25
                         bool_username_jin = False
@@ -89,7 +92,16 @@ def summonjin(CSV_List, i):
                                 Menyerahkan sesajen...
                                 Membacakan mantra...
                                 Jin {username_jin} berhasil dipanggil!''')
-                                CSV_List += [[username_jin,password_jin,'Pembangun']]
+                                new_data = [username_jin,password_jin,'Pengumpul']
+                                indeks = None
+                                # Mengecek indeks baris paling kecil yang memiliki None untuk kemudian diganti dengan input summonjin yakni [username_jin,password_jin,'Pengumpul']
+                                for i, row in enumerate(CSV_List):
+                                    if row == [None, None, None]:
+                                        indeks = i
+                                        break
+                                # Mengganti baris pada indeks yang ditemukan dengan data baru
+                                if indeks is not None:
+                                    CSV_List[indeks] = new_data
                                 print()
                                 animasijin()
                                 bool_password = False
@@ -100,7 +112,8 @@ def summonjin(CSV_List, i):
     return CSV_List
 
 
-# contoh aplikasi secara lokal
-#CSV_List = [['username','password','role'],['Bondowoso','cintaroro','bandung_bondowoso'],['Roro','gasukabondo','roro_jonggrang']]
-#summonjin(CSV_List, 1)
-#print(CSV_List)
+#contoh aplikasi secara lokal
+# CSV_List = [['username','password','role'],['Bondowoso','cintaroro','bandung_bondowoso'],['Roro','gasukabondo','roro_jonggrang'],[None, None, None],[None, None, None],[None, None, None]]
+# summonjin(CSV_List, 1)
+# print(CSV_List)
+
