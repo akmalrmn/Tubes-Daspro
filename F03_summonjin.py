@@ -9,7 +9,7 @@ def count_kata_jin(CSV_List):
         return 0
     count_kata_jin = 0
     for baris in CSV_List:
-        if 'Pengumpul' in baris or 'Pembangun' in baris:
+        if baris[2] == "Pengumpul" or baris[2] == 'Pembangun':
             count_kata_jin += 1
     return count_kata_jin
 
