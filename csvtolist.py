@@ -21,4 +21,3 @@ def csv_to_list(csv_path, row, collumns): # mengubah csv ke list in list
                 kata_grup += [kata] # ketika tidak menemukan baris baru/sudah pada baris terakhir
                 csv_list[j] = kata_grup
     return csv_list
-
