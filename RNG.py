@@ -16,5 +16,8 @@ m = 11  # modulus
 
 lcg = LCG(seed, a, c, m)
 
-# Membuat list yang isinya angka antara 0 dan 5
-rand_nums = [lcg.generate() % 6 for _ in range(1001)]
+# Membuat array yang isinya angka antara 0 dan 5 dengan asumsi user tidak akan menggunakan RNG lebih dari 999999 kali
+rand_nums = [lcg.generate() % 6 for _ in range(99999)]
+
+# Membuat array yang isinya angka antara 1 dan 5
+rand_nums2 = [(lcg.generate() % 5) + 1 for _ in range(99999)]
