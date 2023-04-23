@@ -5,6 +5,8 @@ def count_rows(arr):
     return row_count
 
 def count_kata_jin(CSV_List):
+    if CSV_List is None:
+        return 0
     count_kata_jin = 0
     for baris in CSV_List:
         if baris is None:
@@ -32,7 +34,7 @@ def summonjin(CSV_List, i):
             nomor_jin = input("Masukkan nomor jenis jin yang ingin dipanggil: ")
             sleep(0.5)
             if nomor_jin not in ['1', '2']:
-                print(f"Tidak ada jenis jin bernomor “{nomor_jin}”!")
+                print(f"Tidak ada jenis jin bernomor \“{nomor_jin}\”!")
                 print()
             elif nomor_jin == '1':
                 print()
@@ -56,8 +58,8 @@ def summonjin(CSV_List, i):
                                 print(f'''Mengumpulkan sesajen...
                                 Menyerahkan sesajen...
                                 Membacakan mantra...
-                                Jin {username_jin} berhasil dipanggil!''')
-                                CSV_List += [username_jin,password_jin,'Pengumpul']
+                                Jin {username_jin} cberhasil dipanggil!''')
+                                CSV_List += [[username_jin,password_jin,'Pengumpul']]
                                 print()
                                 animasijin()
                                 bool_password = False
@@ -85,7 +87,7 @@ def summonjin(CSV_List, i):
                                 Menyerahkan sesajen...
                                 Membacakan mantra...
                                 Jin {username_jin} berhasil dipanggil!''')
-                                CSV_List += [username_jin,password_jin,'Pembangun']
+                                CSV_List += [[username_jin,password_jin,'Pembangun']]
                                 print()
                                 animasijin()
                                 bool_password = False
@@ -94,3 +96,10 @@ def summonjin(CSV_List, i):
     else:
         print("Program ini hanya dapat diakses oleh Bondowoso")
     return CSV_List
+
+
+# contoh aplikasi secara lokal
+#CSV_List = [['username','password','role'],['Bondowoso','cintaroro','bandung_bondowoso'],['Roro','gasukabondo','roro_jonggrang']]
+#summonjin(CSV_List, 1)
+#print(CSV_List)
+
