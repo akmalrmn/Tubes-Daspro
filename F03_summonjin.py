@@ -7,7 +7,9 @@ def count_rows(arr):
 def count_kata_jin(CSV_List):
     count_kata_jin = 0
     for baris in CSV_List:
-        if 'Pengumpul' in baris[2] or 'Pembangun' in baris[2]:
+        if baris is None:
+            continue
+        elif 'Pengumpul' in baris[2] or 'Pembangun' in baris[2]:
             count_kata_jin += 1
     return count_kata_jin
 
@@ -15,7 +17,7 @@ from time import sleep
 from animasi import animasijin
 
 def summonjin(CSV_List, i):
-    if count_kata_jin(CSV_List) >= 102:
+    if count_kata_jin(CSV_List) > 101:
         print('Jumlah Jin telah maksimal! (100 jin). Bandung tidak dapat men-summon lebih dari itu')
         return None
     elif CSV_List[i][0] == "Bondowoso":
@@ -40,11 +42,8 @@ def summonjin(CSV_List, i):
                 while bool_username_jin:
                     sleep(0.5)
                     username_jin = input('Masukkan username jin: ')
-                    if username_jin == True: #buat cara mengetahui apakah username_jin sudah ada di matriks
-                        for baris in CSV_List:
-                            if baris[0] == username_jin:
-                                #bila username_jin sudah ada maka
-                                print(f'Username {username_jin} sudah diambil!')
+                    if username_jin in [row[0] for row in CSV_List]: #buat cara mengetahui apakah username_jin sudah ada di matriks
+                        print(f'Username {username_jin} sudah diambil!')
                     else: #jika username_jin belum ada maka buat password
                         # buat loop sampai password memiliki len 5-25
                         bool_username_jin = False
@@ -71,11 +70,8 @@ def summonjin(CSV_List, i):
                 bool_username_jin = True
                 while bool_username_jin:
                     username_jin = input('Masukkan username jin: ')
-                    if username_jin == True: #buat cara mengetahui apakah username_jin sudah ada di matriks
-                        for baris in f:
-                            if baris[0] == username_jin:
-                                #bila username_jin sudah ada maka
-                                print(f'Username {username_jin} sudah diambil!')
+                    if username_jin in [row[0] for row in CSV_List]: #buat cara mengetahui apakah username_jin sudah ada di matriks
+                        print(f'Username {username_jin} sudah diambil!')
                     else: #jika username_jin belum ada maka buat password
                         # buat loop sampai password memiliki len 5-25
                         bool_username_jin = False
