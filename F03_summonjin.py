@@ -30,7 +30,8 @@ def summonjin(CSV_List, i):
             nomor_jin = input("Masukkan nomor jenis jin yang ingin dipanggil: ")
             sleep(0.5)
             if nomor_jin not in ['1', '2']:
-                print(f"Tidak ada jenis jin bernomor \“{nomor_jin}\”!")
+                sleep(0.5)
+                print(f"Tidak ada jenis jin bernomor “{nomor_jin}”!")
                 print()
             elif nomor_jin == '1':
                 print()
@@ -41,7 +42,9 @@ def summonjin(CSV_List, i):
                     sleep(0.5)
                     username_jin = input('Masukkan username jin: ')
                     if username_jin in [row[0] for row in CSV_List]: #buat cara mengetahui apakah username_jin sudah ada di matriks
+                        sleep(0.5)
                         print(f'Username {username_jin} sudah diambil!')
+                        print()
                     else: #jika username_jin belum ada maka buat password
                         # buat loop sampai password memiliki len 5-25
                         bool_username_jin = False
@@ -69,6 +72,7 @@ def summonjin(CSV_List, i):
                                 animasijin()
                                 bool_password = False
                             else: #jika panjang password tidak 5 sampai 25 karakter
+                                sleep(0.5)
                                 print('Password panjangnya harus 5-25 karakter!')
             else: # untuk nomor jin == 2
                 bool_nomor_jin = False
@@ -78,7 +82,9 @@ def summonjin(CSV_List, i):
                 while bool_username_jin:
                     username_jin = input('Masukkan username jin: ')
                     if username_jin in [row[0] for row in CSV_List]: #buat cara mengetahui apakah username_jin sudah ada di matriks
+                        sleep(0.5)
                         print(f'Username {username_jin} sudah diambil!')
+                        print()
                     else: #jika username_jin belum ada maka buat password
                         # buat loop sampai password memiliki len 5-25
                         bool_username_jin = False
@@ -106,14 +112,8 @@ def summonjin(CSV_List, i):
                                 animasijin()
                                 bool_password = False
                             else: #jika panjang password tidak 5 sampai 25 karakter
+                                sleep(0.5)
                                 print('Password panjangnya harus 5-25 karakter!')
     else:
         print("Program ini hanya dapat diakses oleh Bondowoso")
     return CSV_List
-
-
-#contoh aplikasi secara lokal
-CSV_List = [['username','password','role'],['Bondowoso','cintaroro','bandung_bondowoso'],['Roro','gasukabondo','roro_jonggrang'],[None, None, None],[None, None, None],[None, None, None]]
-summonjin(CSV_List, 1)
-print(CSV_List)
-
