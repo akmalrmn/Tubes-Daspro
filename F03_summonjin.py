@@ -59,11 +59,11 @@ def summonjin(CSV_List, i):
                                 Membacakan mantra...
                                 Jin {username_jin} berhasil dipanggil!''')
                                 new_data = [username_jin,password_jin,'Pengumpul']
-                                indeks = None
                                 # Mengecek indeks baris paling kecil yang memiliki None untuk kemudian diganti dengan input summonjin yakni [username_jin,password_jin,'Pengumpul']
-                                for i, row in enumerate(CSV_List):
-                                    if row == [None, None, None]:
-                                        indeks = i
+                                indeks = None
+                                for row_idx in range(count_rows(CSV_List)):
+                                    if CSV_List[row_idx][0] is None:
+                                        indeks = row_idx
                                         break
                                 # Mengganti baris pada indeks yang ditemukan dengan data baru
                                 if indeks is not None:
@@ -98,12 +98,12 @@ def summonjin(CSV_List, i):
                                 Menyerahkan sesajen...
                                 Membacakan mantra...
                                 Jin {username_jin} berhasil dipanggil!''')
-                                new_data = [username_jin,password_jin,'Pengumpul']
-                                indeks = None
+                                new_data = [username_jin,password_jin,'Pembangun']
                                 # Mengecek indeks baris paling kecil yang memiliki None untuk kemudian diganti dengan input summonjin yakni [username_jin,password_jin,'Pengumpul']
-                                for i, row in enumerate(CSV_List):
-                                    if row == [None, None, None]:
-                                        indeks = i
+                                indeks = None
+                                for row_idx in range(count_rows(CSV_List)):
+                                    if CSV_List[row_idx][0] is None:
+                                        indeks = row_idx
                                         break
                                 # Mengganti baris pada indeks yang ditemukan dengan data baru
                                 if indeks is not None:
