@@ -19,36 +19,41 @@ def laporancandi(idx_usn,user,candi):
         # banyak_pasir_digunakan didapat dari penjumlahan kolom pasir dari array candi.csv
         def banyak_pasir_digunakan():
             banyak_pasir_digunakan = 0
-            for baris in range(1, count_rows(candi)) : # memindai tiap baris dari candi tapi baris pertama gak termasuk karena baris pertama kan judul
-                if baris[2] != None: # kalau belum ketemu 'None' artinya lanjut
+            for i in range(1, count_rows(candi)) : # memindai tiap baris dari candi tapi baris pertama gak termasuk karena baris pertama kan judul
+                baris = candi[i]
+                if baris[2] is not None: # kalau belum ketemu 'None' artinya lanjut
                     banyak_pasir_digunakan += int(baris[2]) # iterasi penjumlahan pasir
-                elif baris[2] == None: # kalau udah ketemu none ya berhenti
-                    return(banyak_pasir_digunakan)
+                else: # kalau udah ketemu none ya berhenti
                     break
+            return(banyak_pasir_digunakan)
+                    
         # banyak_batu_digunakan didapat dari penjumlahan kolom batu dari array candi.csv
         def banyak_batu_digunakan():
             banyak_batu_digunakan = 0
-            for baris in range(1, count_rows(candi)) : # memindai tiap baris dari candi tapi baris pertama gak termasuk karena baris pertama kan judul
-                if baris[3] != None: # kalau belum ketemu 'None' artinya lanjut
-                    banyak_batu_digunakan += int(baris[3]) # iterasi penjumlahan batu
-                elif baris[3] == None: # kalau udah ketemu none ya berhenti
-                    return(banyak_batu_digunakan)
+            for i in range(1, count_rows(candi)):
+                baris = candi[i]
+                if baris[3] is not None:
+                    banyak_batu_digunakan += int(baris[3])
+                else:
                     break
+            return banyak_batu_digunakan
 
         # banyak_air_digunakan didapat dari penjumlahan kolom air dari array candi.csv
         def banyak_air_digunakan():
             banyak_air_digunakan = 0
-            for baris in range(1, count_rows(candi)) :
-                if baris[4] != None:
+            for i in range(1, count_rows(candi)) :
+                baris = candi[i]
+                if baris[4] is not None:
                     banyak_air_digunakan += int(baris[4])
-                elif baris[4] == None:
-                    return(banyak_air_digunakan)
+                else:
                     break
+            return banyak_air_digunakan
 
         def id_candi_termahal(candi):
             id_termahal = '-'
             harga_termahal = '-'
-            for baris in range(1, count_rows(candi)):
+            for i in range(1, count_rows(candi)):
+                baris = candi[i]
                 if baris[2] is None:
                     return f"{id_termahal} (Rp {harga_termahal})"
                     break
@@ -61,7 +66,8 @@ def laporancandi(idx_usn,user,candi):
         def id_candi_termurah(candi):
             id_termurah = '-'
             harga_termurah = '-'
-            for baris in range(1, count_rows(candi)):
+            for i in range(1, count_rows(candi)):
+                baris = candi[i]
                 if baris[2] is None:
                     return f"{id_termurah} (Rp {harga_termurah})"
                     break
