@@ -12,6 +12,8 @@ from F11_hancurkan_candi import hancurkan_candi
 from F06_jin_pembangun import jin_pembangun
 from F12_ayam_berkokok import ayam_berkokok
 from F16_exitt import exitt
+from F14_save import save
+from F10_laporancandi import laporancandi
 
 def run(masukan, login_status, idx_usn, user, idx_rng, candi, bahan_bangunan, sisa_bangun_candi, berhenti):
     if login_status: # User sudah melakukan login
@@ -43,8 +45,10 @@ def run(masukan, login_status, idx_usn, user, idx_rng, candi, bahan_bangunan, si
           idx_rng, bahan_bangunan, candi, user, sisa_bangun_candi = jin_pembangun(idx_rng, bahan_bangunan, candi, user)
         elif masukan == "ayamberkokok":
           ayam_berkokok(user, idx_usn, sisa_bangun_candi)
+        elif masukan == "save":
+          save(user, candi, bahan_bangunan)
         elif masukan == "laporancandi":
-          laporancandi(idx_usn,user,candi)
+          laporancandi(idx_usn, user, candi)
         else: # Masukan tidak sesuai dengan opsi yang ada
           print(f"Opsi {masukan} tidak tersedia")
     elif not(login_status): # user belum melakukan login
