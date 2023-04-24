@@ -1,6 +1,3 @@
-
-
-
 def laporancandi(idx_usn,user,candi):
     if user[idx_usn][0] == "Bondowoso":
         # copas dari F06
