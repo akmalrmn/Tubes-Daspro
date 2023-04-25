@@ -1,84 +1,70 @@
 from RNG import rand_nums2
 import random
 
-def jin_pembangun(idx_rng, bahan_bangunan, candi, user):
-    # idd dari candi yang dibangun
-    idd = 1
-    if candi[1][0] != None :
-        for i in range (101):
-            if candi[i][0] == None :
-                idd = int(candi[i-1][0]) + 1
+def jin_pembangun(idx_rng, bahan_bangunan, candi, user, idx_usn):
+    if user[idx_usn][2] == "jin_pembangun":
+        pembuat = user[idx_usn]
+
+        # idd dari candi yang dibangun
+        idd = 1
+        if candi[1][0] != None :
+            for i in range (101):
+                if candi[i][0] == None :
+                    idd = int(candi[i-1][0]) + 1
+                    break
+
+        # Menghitung banyak candi
+        banyak_candi = -1
+        for element in candi :
+            if element[0] != None :
+                banyak_candi += 1
+            else :
                 break
 
-    # Menghitung banyak candi
-    banyak_candi = -1
-    for element in candi :
-        if element[0] != None :
-            banyak_candi += 1
+        # Bahan bangunan yang dibutuhkan
+        pasir_dibutuhkan = rand_nums2[idx_rng]
+        batu_dibutuhkan = rand_nums2[idx_rng+1]
+        air_dibutuhkan = rand_nums2[idx_rng+2]
+        idx_rng += 3
+
+        # Sisa bahan bangunan yang sudah dipakai
+        sisa_pasir = int(bahan_bangunan[1][2]) - pasir_dibutuhkan
+        sisa_batu = int(bahan_bangunan[2][2]) - batu_dibutuhkan
+        sisa_air = int(bahan_bangunan[3][2]) - air_dibutuhkan
+
+        # Sisa candi yang perlu dibangun
+        sisa_bangun_candi = 100 - banyak_candi
+
+        # Algoritma
+        if sisa_pasir < 0 or sisa_batu < 0 or sisa_air < 0 :
+            print('Bahan bangunan tidak mencukupi.\nCandi tidak bisa dibangun!')
         else :
-            break
+            if banyak_candi == 100 :
+                print('Candi berhasil dibangun.\nSisa candi yang perlu dibangun: 0.')
+            else :
+                print(f'Candi berhasil dibangun.\nSisa candi yang perlu dibangun: {sisa_bangun_candi}.')
 
-    # Bahan bangunan yang dibutuhkan
-    pasir_dibutuhkan = rand_nums2[idx_rng]
-    batu_dibutuhkan = rand_nums2[idx_rng+1]
-    air_dibutuhkan = rand_nums2[idx_rng+2]
-    idx_rng += 3
+            # Mengubah jumlah pasir,batu,dan air, pada array bahan_bangunan karena candi berhasil dibangun
+            bahan_bangunan[1][2] = sisa_pasir
+            bahan_bangunan[2][2] = sisa_batu
+            bahan_bangunan[3][2] = sisa_air
+        
+        # Membuat array untuk ditambahkan ke dalam file
+        if banyak_candi < 100 :
+            # Menggabungkan list ke dalam file candi
+            candii_baru = [idd,pembuat[0],pasir_dibutuhkan,batu_dibutuhkan,air_dibutuhkan]
+            idx = 0
+            while idx < 101 :
+                if candi[idx][0] == None:
+                    candi[idx] = candii_baru
+                    idx = 101
+                idx += 1
 
-    # Sisa bahan bangunan yang sudah dipakai
-    sisa_pasir = int(bahan_bangunan[1][2]) - pasir_dibutuhkan
-    sisa_batu = int(bahan_bangunan[2][2]) - batu_dibutuhkan
-    sisa_air = int(bahan_bangunan[3][2]) - air_dibutuhkan
-
-    # Menghitung banyak jin pembangun dalam array user
-    banyak_jin_pembangun = 0
-    for a in user :
-        if a[2] == "Pembangun" :
-            banyak_jin_pembangun += 1
-
-    # List nama jin pembangun candi
-    nama_jin = [None for i in range (banyak_jin_pembangun)]
-    idx = 0
-    for baris in user :
-        if baris is None:
-            return 0
-        elif baris[2] == "Pembangun" :
-            nama_jin[idx] = baris[0]
-            idx += 1
-    
-    # Mengambil nama jin random dari list nama_jin
-    if idx != 0 :
-        pembuat = random.choice(nama_jin)
-
-    # Sisa candi yang perlu dibangun
-    sisa_bangun_candi = 100 - banyak_candi
-
-    # Algoritma
-    if sisa_pasir < 0 or sisa_batu < 0 or sisa_air < 0 :
-        print('Bahan bangunan tidak mencukupi.\nCandi tidak bisa dibangun!')
-    else :
-        if banyak_candi == 100 :
-            print('Candi berhasil dibangun.\nSisa candi yang perlu dibangun: 0.')
+        # Jika banyak candi sudah 100 maka candi yang sudah dibuat tidak disimpan
         else :
-            print(f'Candi berhasil dibangun.\nSisa candi yang perlu dibangun: {sisa_bangun_candi}.')
+            candii_baru = candi
 
-        # Mengubah jumlah pasir,batu,dan air, pada array bahan_bangunan karena candi berhasil dibangun
-        bahan_bangunan[1][2] = sisa_pasir
-        bahan_bangunan[2][2] = sisa_batu
-        bahan_bangunan[3][2] = sisa_air
+        return idx_rng, bahan_bangunan, candii_baru, user, sisa_bangun_candi
     
-    # Membuat array untuk ditambahkan ke dalam file
-    if banyak_candi < 100 :
-        # Menggabungkan list ke dalam file candi
-        candii_baru = [idd,pembuat,pasir_dibutuhkan,batu_dibutuhkan,air_dibutuhkan]
-        idx = 0
-        while idx < 101 :
-            if candi[idx][0] == None:
-                candi[idx] = candii_baru
-                idx = 101
-            idx += 1
-
-    # Jika banyak candi sudah 100 maka candi yang sudah dibuat tidak disimpan
     else :
-        candii_baru = candi
-
-    return idx_rng, bahan_bangunan, candii_baru, user, sisa_bangun_candi
+        print("Program ini hanya dapat diakses oleh jin pembangun")
