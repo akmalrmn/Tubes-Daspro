@@ -5,7 +5,9 @@ def list_to_csv(my_list,path,filename):
         line = ''
         for element in sublist:
             line += str(element) + ';'
-        csv_string += line[:-1] + '\n'
+        for i in range(len(line)-1):
+            csv_string += line[i]
+        csv_string += '\n'
 
     # Menyimpan string ke dalam file CSV
     with open(f'{path}/{filename}', 'w') as file:
