@@ -1,8 +1,10 @@
+from time import sleep
+
 def hancurkan_candi(arr_candi, idx_usn, user):
     arr_candi_baru = arr_candi
     if user[idx_usn][0] == "Roro":
         # Input id candi 
-        id_candi = input('Masukan ID candi: ')
+        id_candi = int(input('Masukan ID candi: '))
 
         # Cek apakah ada candi dengan ID tersebut dan declare atas nama valid
         valid = False
@@ -11,6 +13,7 @@ def hancurkan_candi(arr_candi, idx_usn, user):
                 valid = True
         # Algoritma Hancurkan_candi
         if not valid :
+            sleep(0.5)
             print('Tidak ada candi dengan ID tersebut.')        
         else :
             pilihan = input(f'Apakah anda yakin ingin menghancurkan candi ID: {id_candi} (Y/N)? ')
@@ -38,10 +41,14 @@ def hancurkan_candi(arr_candi, idx_usn, user):
                             kolom += 1
                     if i != row_num :
                         baris += 1
+                sleep(0.5)
+                print()
                 print("Candi berhasil dihancurkan")
             else:
+                sleep(0.5)
+                print()
                 print("Candi gagal dihancurkan.")
     else:
+        sleep(0.5)
         print("Program ini hanya dapat diakses oleh Roro")
-    print(arr_candi_baru, len(arr_candi_baru))
     return arr_candi_baru

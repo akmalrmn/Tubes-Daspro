@@ -9,10 +9,12 @@ def kumpul(bahan_bangunan, idx_rng, idx_usn, user):
     for i in range(3):
       bahan_bangunan[i+1][2] += rand_nums[idx_rng+i] # melakukan penambahan bahan dengan RNG
       nama_bahan[i][1] = rand_nums[idx_rng+i]
+      bahan_bangunan[i+1][0] = nama_bahan[i][0]
     animasibahan(nama_bahan[0][1], nama_bahan[1][1], nama_bahan[2][1])
     sleep(0.5)
     print(f"{user[idx_usn][0]} menemukan", nama_bahan[0][1], "pasir,", nama_bahan[1][1], "batu, dan", nama_bahan[2][1], "air")
     idx_rng += 3
   else:
     print("Program ini hanya dapat diakses oleh jin Pengumpul")
+  print(bahan_bangunan)
   return bahan_bangunan, idx_rng

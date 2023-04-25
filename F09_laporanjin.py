@@ -39,92 +39,58 @@ def laporan_jin(user, candi, bahan_bangunan, idx_usn):
         return jumlah
 
     def jin_terajin(x,y):
-        
-        arr_jin_pembangun = [None for i in range (total_jin_pembangun(x))]
-        j = 0
-        for i in range (panjang(x)):
-            if x[i][2] == "pembangun":
-                arr_jin_pembangun[j] = x[i][0]
-                j += 1
-        
         total = 0
         rajin = "-"
         nama_jin = ""
         if y[1][0] == None:
-            if panjang(x) == 3:
-                return rajin
-            else:
-                rajin = arr_jin_pembangun[0]
-                for i in range (1, total_jin_pembangun(x)):
-                    if arr_jin_pembangun[i] < rajin:
-                        rajin = arr_jin_pembangun[i]
-                return rajin
-
+            return rajin
         else:
             for i in range (3, panjang(x)):
-                if x[i][2] == "pembangun":
-                    nama_jin = x[i][0]
-                    total_sementara = 0
-                    for j in range (panjang(y)):
-                        if y[j][1] == nama_jin:
-                            total_sementara += 1
-                        else:
-                            continue
-                    if total_sementara > total:
-                        total = total_sementara
-                        rajin = nama_jin
-                    elif total_sementara == total:
-                        if rajin > nama_jin:
-                            rajin = nama_jin
-                        else:
-                            rajin = rajin
+                nama_jin = x[i][0]
+                total_sementara = 0
+                for j in range (panjang(y)):
+                    if y[j][1] == nama_jin:
+                        total_sementara += 1
                     else:
                         continue
+                if total_sementara > total:
+                    total = total_sementara
+                    rajin = nama_jin
+                elif total_sementara == total:
+                    if rajin > nama_jin:
+                        rajin = nama_jin
+                    else:
+                        rajin = rajin
+                else:
+                    continue
             return rajin
 
     def jin_termalas(x,y):
-
-        arr_jin_pembangun = [None for i in range (total_jin_pembangun(x))]
-        j = 0
-        for i in range (panjang(x)):
-            if x[i][2] == "pembangun":
-                arr_jin_pembangun[j] = x[i][0]
-                j += 1
-        
         total = 101
-        malas = "-"
+        rajin = "-"
         nama_jin = ""
         if y[1][0] == None:
-            if panjang(x) == 3:
-                return malas
-            else:
-                malas = arr_jin_pembangun[0]
-                for i in range (1, total_jin_pembangun(x)):
-                    if arr_jin_pembangun[i] > malas:
-                        malas = arr_jin_pembangun[i]
-                return malas
-        
+            return rajin
         else:
             for i in range (3, panjang(x)):
-                if x[i][2] == "pembangun":
-                    nama_jin = x[i][0]
-                    total_sementara = 0
-                    for j in range (panjang(y)):
-                        if y[j][1] == nama_jin:
-                            total_sementara += 1
-                        else:
-                            continue
-                    if total_sementara < total:
-                        total = total_sementara
-                        malas = nama_jin
-                    elif total_sementara == total:
-                        if malas > nama_jin:
-                            malas = malas
-                        else:
-                            malas = nama_jin
+                nama_jin = x[i][0]
+                total_sementara = 0
+                for j in range (panjang(y)):
+                    if y[j][1] == nama_jin:
+                        total_sementara += 1
                     else:
                         continue
-            return malas
+                if total_sementara < total:
+                    total = total_sementara
+                    rajin = nama_jin
+                elif total_sementara == total:
+                    if rajin > nama_jin:
+                        rajin = rajin
+                    else:
+                        rajin = nama_jin
+                else:
+                    continue
+            return rajin
 
     def jumlah_pasir(x):
         jumlah = 0

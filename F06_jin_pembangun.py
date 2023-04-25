@@ -12,7 +12,7 @@ def jin_pembangun(idx_rng, bahan_bangunan, candi, user, idx_usn):
         else :
             break
     # Sisa candi yang perlu dibangun
-    sisa_bangun_candi = 99 - banyak_candi
+    sisa_bangun_candi = 100 - banyak_candi
     if user[idx_usn][2] == "Pembangun":
         if bahan_bangunan[1][2] != None and bahan_bangunan[2][2] != None and bahan_bangunan[3][2] != None:
             pembuat = user[idx_usn]
@@ -46,6 +46,7 @@ def jin_pembangun(idx_rng, bahan_bangunan, candi, user, idx_usn):
                     sleep(1)
                     print('Candi berhasil dibangun.\nSisa candi yang perlu dibangun: 0.')
                 else :
+                    sisa_bangun_candi -= 1
                     sleep(1)
                     print(f'Candi berhasil dibangun.\nSisa candi yang perlu dibangun: {sisa_bangun_candi}.')
 
@@ -75,4 +76,4 @@ def jin_pembangun(idx_rng, bahan_bangunan, candi, user, idx_usn):
         candii_baru = candi
         sleep(0.5)
         print("Program ini hanya dapat diakses oleh jin pembangun")
-    return idx_rng, bahan_bangunan, candi, user, sisa_bangun_candi
+    return idx_rng, bahan_bangunan, candi, user

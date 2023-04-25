@@ -14,8 +14,9 @@ from F12_ayam_berkokok import ayam_berkokok
 from F16_exitt import exitt
 from F14_save import save
 from F10_laporancandi import laporancandi
+from F13_load import load
 
-def run(masukan, login_status, idx_usn, user, idx_rng, candi, bahan_bangunan, sisa_bangun_candi, berhenti):
+def run(masukan, login_status, idx_usn, user, idx_rng, candi, bahan_bangunan, berhenti):
     if login_status: # User sudah melakukan login
         if masukan == "login":
           login(user, login_status, idx_usn)
@@ -34,17 +35,17 @@ def run(masukan, login_status, idx_usn, user, idx_rng, candi, bahan_bangunan, si
         elif masukan  == "help":  
           Help(login_status, idx_usn, user)
         elif masukan == "exit":
-          berhenti = exitt()
+          berhenti = exitt(user, candi, bahan_bangunan)
         elif masukan == "batchkumpul":
           bahan_bangunan, idx_rng = batchkumpul(bahan_bangunan, idx_rng, user, idx_usn)
         elif masukan == "batchbangun":
-          bahan_bangunan, idx_rng = batchbangun(idx_rng, bahan_bangunan, user, idx_usn, candi)
+          bahan_bangunan, idx_rng, candi = batchbangun(idx_rng, bahan_bangunan, user, idx_usn, candi)
         elif masukan == "hancurkancandi":
           candi = hancurkan_candi(candi, idx_usn, user)
         elif masukan == "bangun":
-          idx_rng, bahan_bangunan, candi, user, sisa_bangun_candi = jin_pembangun(idx_rng, bahan_bangunan, candi, user)
+          idx_rng, bahan_bangunan, candi, user = jin_pembangun(idx_rng, bahan_bangunan, candi, user, idx_usn)
         elif masukan == "ayamberkokok":
-          ayam_berkokok(user, idx_usn, sisa_bangun_candi)
+          ayam_berkokok(user, idx_usn, candi)
         elif masukan == "save":
           save(user, candi, bahan_bangunan)
         elif masukan == "laporancandi":
@@ -58,6 +59,8 @@ def run(masukan, login_status, idx_usn, user, idx_rng, candi, bahan_bangunan, si
           user, login_status = logout(login_status, idx_usn, user)
         elif masukan  == "help":
           Help(login_status, idx_usn, user)
+        elif masukan == "load":
+          load()
         else: # Masukan tidak sesuai dengan opsi yang ada
           print(f"Opsi {masukan} tidak tersedia")
-    return login_status, idx_usn, user, idx_rng, candi, bahan_bangunan, sisa_bangun_candi, berhenti # me-return beberapa variabel
+    return login_status, idx_usn, user, idx_rng, candi, bahan_bangunan, berhenti # me-return beberapa variabel

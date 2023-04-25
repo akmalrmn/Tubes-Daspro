@@ -52,7 +52,7 @@ def hapus_jin(user, candi, idx_usn):
         if array == "user":
             arr = [[None for j in range(3)] for i in range (1001)]
         else: # candi
-            arr = [[None for j in range(5)] for i in range (1001)]
+            arr = [[None for j in range(5)] for i in range (101)]
         for i in range (panjang_array(array)):
             arr[i] = array[i]
         return arr
@@ -79,4 +79,5 @@ def hapus_jin(user, candi, idx_usn):
             print(f"Tidak ada jin dengan username {jin}.")
     else:
         print("Program ini hanya dapat diakses oleh Bondowoso")
+    print(user, len(user), candi, len(candi))
     return user, candi
