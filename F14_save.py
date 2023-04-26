@@ -1,5 +1,6 @@
 import os
 import listtocsv
+from time import sleep
 
 def save(user,candi,bahan_bangunan):
     def panjang_array(array):
@@ -26,9 +27,9 @@ def save(user,candi,bahan_bangunan):
             i += 1
         return jumlah
 
-    print(">>> save\n")
     folder = input("Masukkan nama folder: ")
     folder = "save/" + folder
+    sleep(1)
     print("\nSaving...\n")
 
     folder += "/"
@@ -41,6 +42,7 @@ def save(user,candi,bahan_bangunan):
             path += folder[i]
         else:
             if os.path.exists(path) == False:
+                sleep(0.5)
                 print(f"Membuat folder {path}...")
                 os.mkdir(path)
                 path += "/"
@@ -51,5 +53,6 @@ def save(user,candi,bahan_bangunan):
             listtocsv.list_to_csv(array_bersih(user),path,'user.csv')
             listtocsv.list_to_csv(array_bersih(candi),path,'candi.csv')
             listtocsv.list_to_csv(array_bersih(bahan_bangunan),path,'bahan_bangunan.csv')
-
+    print()
+    sleep(1)
     print(f"Berhasil Menyimpan data di folder {nama_folder}!")
