@@ -44,6 +44,8 @@ def save(user,candi,bahan_bangunan):
                 print(f"Membuat folder {path}...")
                 os.mkdir(path)
                 path += "/"
+            else:
+                path += "/"
                 
     if os.path.exists(path) == True:      
             listtocsv.list_to_csv(array_bersih(user),path,'user.csv')
