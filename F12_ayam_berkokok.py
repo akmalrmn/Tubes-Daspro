@@ -34,7 +34,7 @@ def ayam_berkokok(user, idx_usn, candi):
       sleep(1.5)
       print()
       print("Yah, Bandung Bondowoso memenangkan permainan!")
-      exit()
+    exit()
   else:
     sleep(0.5)
     print("Program ini hanya dapat diakses oleh Roro")
