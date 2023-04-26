@@ -2,6 +2,7 @@ import os
 import argparse
 from time import sleep
 from csvtolist import csv_to_list
+from main import main
 
 def load():
     parser = argparse.ArgumentParser()
@@ -39,3 +40,5 @@ def load():
                 candi = csv_to_list(file_path, 101, 5)
             elif file_name == "bahan_bangunan.csv":
                 bahan_bangunan = csv_to_list(file_path, 5, 3)
+    loadd = True
+    main(loadd)

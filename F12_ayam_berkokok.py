@@ -37,3 +37,4 @@ def ayam_berkokok(user, idx_usn, candi):
   else:
     sleep(0.5)
     print("Program ini hanya dapat diakses oleh Roro")
+  exit()

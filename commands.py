@@ -14,9 +14,8 @@ from F12_ayam_berkokok import ayam_berkokok
 from F16_exitt import exitt
 from F14_save import save
 from F10_laporancandi import laporancandi
-from F13_load import load
 
-def run(masukan, login_status, idx_usn, user, idx_rng, candi, bahan_bangunan, berhenti):
+def run(masukan, login_status, idx_usn, user, idx_rng, candi, idx_rng2, bahan_bangunan):
     if login_status: # User sudah melakukan login
         if masukan == "login":
           login(user, login_status, idx_usn)
@@ -35,11 +34,11 @@ def run(masukan, login_status, idx_usn, user, idx_rng, candi, bahan_bangunan, be
         elif masukan  == "help":  
           Help(login_status, idx_usn, user)
         elif masukan == "exit":
-          berhenti = exitt(user, candi, bahan_bangunan)
+          exitt(user, candi, bahan_bangunan)
         elif masukan == "batchkumpul":
           bahan_bangunan, idx_rng = batchkumpul(bahan_bangunan, idx_rng, user, idx_usn)
         elif masukan == "batchbangun":
-          bahan_bangunan, idx_rng, candi = batchbangun(idx_rng, bahan_bangunan, user, idx_usn, candi)
+          bahan_bangunan, idx_rng, candi = batchbangun(idx_rng2, bahan_bangunan, user, idx_usn, candi)
         elif masukan == "hancurkancandi":
           candi = hancurkan_candi(candi, idx_usn, user)
         elif masukan == "bangun":
@@ -59,8 +58,8 @@ def run(masukan, login_status, idx_usn, user, idx_rng, candi, bahan_bangunan, be
           user, login_status = logout(login_status, idx_usn, user)
         elif masukan  == "help":
           Help(login_status, idx_usn, user)
-        elif masukan == "load":
-          load()
+        elif masukan == "save":
+          save(user, candi, bahan_bangunan)
         else: # Masukan tidak sesuai dengan opsi yang ada
           print(f"Opsi {masukan} tidak tersedia")
-    return login_status, idx_usn, user, idx_rng, candi, bahan_bangunan, berhenti # me-return beberapa variabel
+    return login_status, idx_usn, user, idx_rng, candi, idx_rng2, bahan_bangunan # me-return beberapa variabel

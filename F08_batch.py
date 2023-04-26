@@ -1,4 +1,4 @@
-from RNG import rand_nums
+from RNG import rand_nums, rand_nums2
 from animasi import animasibahan, animasicandi
 
 
@@ -34,7 +34,7 @@ def batchkumpul(arr_bahan_bangunan, idx_rng, arr_user, idx_usn):
     return arr_bahan_bangunan, idx_rng
 
 
-def batchbangun(idx_rng, arr_bahan_bangunan, arr_user, idx_usn, candi):
+def batchbangun(idx_rng2, arr_bahan_bangunan, arr_user, idx_usn, candi):
     if arr_user[idx_usn][0] == "Bondowoso":
         banyak_jin_pembangun, pasirtotal, batutotal, airtotal, pasir, batu, air = 0, 0, 0, 0, list(), list(), list()
         list_pembangun = []
@@ -58,14 +58,14 @@ def batchbangun(idx_rng, arr_bahan_bangunan, arr_user, idx_usn, candi):
 
             # loop jumlah jin untuk mengetahui jumlah bahan dibutuhkan
             for i in range(banyak_jin_pembangun):
-                pasir[i] = rand_nums[idx_rng]
-                batu[i] = rand_nums[idx_rng+1]
-                air[i] = rand_nums[idx_rng+2]
+                pasir[i] = rand_nums2[idx_rng2]
+                batu[i] = rand_nums2[idx_rng2+1]
+                air[i] = rand_nums2[idx_rng2+2]
 
                 pasirtotal += pasir[i]
                 batutotal += batu[i]
                 airtotal += air[i]
-                idx_rng += 3
+                idx_rng2 += 3
             print(
                 f"Mengerahkan {banyak_jin_pembangun} jin untuk membangun candi dengan total bahan {pasirtotal} pasir, {batutotal} batu, dan {airtotal} air.")
             # mengecek apakah semua bahan cukup
@@ -97,8 +97,7 @@ def batchbangun(idx_rng, arr_bahan_bangunan, arr_user, idx_usn, candi):
                     if banyak_candi < 100:
                         # Menggabungkan list ke dalam file candi
                         idd = f"{banyak_candi+1}"
-                        candi[banyak_candi +
-                              1] = idd, list_pembangun[i], pasir[i], batu[i], air[i]
+                        candi[banyak_candi + 1] = [int(idd), list_pembangun[i], pasir[i], batu[i], air[i]]
                         banyak_candi += 1
                     else:
                         break
@@ -128,6 +127,4 @@ def batchbangun(idx_rng, arr_bahan_bangunan, arr_user, idx_usn, candi):
                 "Bangun gagal. Anda tidak punya jin pembangun. Silahkan summon terlebih dahulu.")
     else:
         print("Program ini hanya dapat diakses oleh Bondowoso")
-    print(candi)
-
-    return arr_bahan_bangunan, idx_rng, candi
+    return arr_bahan_bangunan, idx_rng2, candi

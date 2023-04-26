@@ -1,6 +1,6 @@
 from time import sleep
 
-def animasijin():
+def animasijin() -> None:
   sleep(0.5)
   print("""
    , ,, ,                              

@@ -13,5 +13,3 @@ def exitt(user, candi, bahan_bangunan):
   sleep(1)
   print("Exit berhasil")
   animasiexit()
-  berhenti = True # indikasi tidak melakukan save dan akan keluar dari program
-  return berhenti
