@@ -16,5 +16,4 @@ def kumpul(bahan_bangunan, idx_rng, idx_usn, user):
     idx_rng += 3
   else:
     print("Program ini hanya dapat diakses oleh jin Pengumpul")
-  print(bahan_bangunan)
   return bahan_bangunan, idx_rng
