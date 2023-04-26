@@ -48,11 +48,14 @@ def hapus_jin(user, candi, idx_usn):
         return arr
     
     # fungsi buat bikin array baru
-    def array_bersih(array):
-        if array == "user":
-            arr = [[None for j in range(3)] for i in range (1001)]
-        else: # candi
-            arr = [[None for j in range(5)] for i in range (101)]
+    def array_bersih_user(array):
+        arr = [[None for j in range(3)] for i in range (1001)]
+        for i in range (panjang_array(array)):
+            arr[i] = array[i]
+        return arr
+    
+    def array_bersih_candi(array):
+        arr = [[None for j in range(5)] for i in range (101)]
         for i in range (panjang_array(array)):
             arr[i] = array[i]
         return arr
@@ -64,8 +67,8 @@ def hapus_jin(user, candi, idx_usn):
                 sleep(0.5)
                 confirm = input(f"Apakah anda yakin ingin menghapus jin dengan username {jin} (Y/N)? ")
                 if confirm == "Y":
-                    user = array_bersih(geser_arr_user(hapus_jin(jin, user)))
-                    candi = array_bersih(geser_arr_candi(hapus_candi_jin(jin, candi)))
+                    user = array_bersih_user(geser_arr_user(hapus_jin(jin, user)))
+                    candi = array_bersih_candi(geser_arr_candi(hapus_candi_jin(jin, candi)))
                     sleep(0.5)
                     print()
                     print(f"{jin} telah berhasil dihapus dari alam gaib.")
