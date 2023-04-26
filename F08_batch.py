@@ -143,24 +143,18 @@ def batchbangun(idx_rng, arr_bahan_bangunan, arr_user, idx_usn, candi):
             print(f"Mengerahkan {banyak_jin_pembangun} jin untuk membangun candi dengan total bahan {pasirtotal} pasir, {batutotal} batu, dan {airtotal} air.")
             #mengecek apakah semua bahan cukup
             cnt = 0
-            if int(arr_bahan_bangunan[1][2]) >= pasirtotal: 
+            if arr_bahan_bangunan[1][2] >= pasirtotal: 
                 cnt += 1
-                a = int(arr_bahan_bangunan[1][2])
-                a -= pasirtotal
-                arr_bahan_bangunan[1][2] = a
-            if int(arr_bahan_bangunan[2][2]) >= batutotal: 
-                b = int(arr_bahan_bangunan[2][2])
-                b -= batutotal
-                arr_bahan_bangunan[2][2] = b
+            if arr_bahan_bangunan[2][2] >= batutotal: 
                 cnt += 1
-            if int(arr_bahan_bangunan[3][2]) >= airtotal: 
-                c = int(arr_bahan_bangunan[3][2])
-                c -= airtotal
-                arr_bahan_bangunan[3][2] = c
+            if arr_bahan_bangunan[3][2] >= airtotal: 
                 cnt += 1
             if cnt == 3: #jika ketiga bahan cukup
                 animasicandi()
                 print(f"Jin berhasil membangun total {banyak_jin_pembangun} candi.")
+                arr_bahan_bangunan[1][2] -= pasirtotal
+                arr_bahan_bangunan[2][2] -= batutotal
+                arr_bahan_bangunan[3][2] -= airtotal
                 # Menghitung banyaknya candi
                 banyak_candi = -1
                 for element in candi :
