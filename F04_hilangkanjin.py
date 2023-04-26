@@ -82,5 +82,4 @@ def hapus_jin(user, candi, idx_usn):
             print(f"Tidak ada jin dengan username {jin}.")
     else:
         print("Program ini hanya dapat diakses oleh Bondowoso")
-    print(user, len(user), candi, len(candi))
     return user, candi
