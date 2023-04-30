@@ -14,8 +14,9 @@ from F12_ayam_berkokok import ayam_berkokok
 from F16_exitt import exitt
 from F14_save import save
 from F10_laporancandi import laporancandi
+from typing import List, Tuple, Union
 
-def run(masukan, login_status, idx_usn, user, idx_rng, candi, idx_rng2, bahan_bangunan):
+def run(masukan: str, login_status: bool, idx_usn: int, user: List[str], idx_rng: int, candi: List[Union[str, int]], idx_rng2: int, bahan_bangunan: List[Union[str, int]]) -> Tuple[bool, int, List[int], int, List[Union[str, int]], int, List[Union[str, int]]]:
     if login_status: # User sudah melakukan login
         if masukan == "login":
           login(user, login_status, idx_usn)
@@ -38,7 +39,7 @@ def run(masukan, login_status, idx_usn, user, idx_rng, candi, idx_rng2, bahan_ba
         elif masukan == "batchkumpul":
           bahan_bangunan, idx_rng = batchkumpul(bahan_bangunan, idx_rng, user, idx_usn)
         elif masukan == "batchbangun":
-          bahan_bangunan, idx_rng, candi = batchbangun(idx_rng2, bahan_bangunan, user, idx_usn, candi)
+          bahan_bangunan, idx_rng2, candi = batchbangun(idx_rng2, bahan_bangunan, user, idx_usn, candi)
         elif masukan == "hancurkancandi":
           candi = hancurkan_candi(candi, idx_usn, user)
         elif masukan == "bangun":
@@ -60,6 +61,8 @@ def run(masukan, login_status, idx_usn, user, idx_rng, candi, idx_rng2, bahan_ba
           Help(login_status, idx_usn, user)
         elif masukan == "save":
           save(user, candi, bahan_bangunan)
+        elif masukan == "exit":
+          exitt(user, candi, bahan_bangunan)
         else: # Masukan tidak sesuai dengan opsi yang ada
           print(f"Opsi {masukan} tidak tersedia")
     return login_status, idx_usn, user, idx_rng, candi, idx_rng2, bahan_bangunan # me-return beberapa variabel
