@@ -2,8 +2,9 @@ from RNG import rand_nums2
 import random
 from time import sleep
 from animasi import animasicandi
+from typing import List, Union, Tuple
 
-def jin_pembangun(idx_rng, bahan_bangunan, candi, user, idx_usn):
+def jin_pembangun(idx_rng: int, bahan_bangunan: List[Union[str, int]], candi: List[Union[str, int]], user: List[str], idx_usn: int) -> Tuple[int, List[Union[str, int]], List[Union[str, int]], List[str]]:
     # Menghitung banyak candi
     banyak_candi = -1
     for element in candi :
@@ -20,7 +21,7 @@ def jin_pembangun(idx_rng, bahan_bangunan, candi, user, idx_usn):
             # idd dari candi yang dibangun
             idd = 1
             if candi[1][0] != None :
-                for i in range (101):
+                for i in range (102):
                     if candi[i][0] == None :
                         idd = int(candi[i-1][0]) + 1
                         break
@@ -58,12 +59,12 @@ def jin_pembangun(idx_rng, bahan_bangunan, candi, user, idx_usn):
             # Membuat array untuk ditambahkan ke dalam file
             if banyak_candi < 100 :
                 # Menggabungkan list ke dalam file candi
-                candii_baru = [idd,pembuat[0],pasir_dibutuhkan,batu_dibutuhkan,air_dibutuhkan]
+                candii_baru = [idd,pembuat[0],pasir_dibutuhkan,batu_dibutuhkan,air_dibutuhkan, None]
                 idx = 0
-                while idx < 101 :
+                while idx < 102 :
                     if candi[idx][0] == None:
                         candi[idx] = candii_baru
-                        idx = 101
+                        idx = 102
                     idx += 1
 
             # Jika banyak candi sudah 100 maka candi yang sudah dibuat tidak disimpan

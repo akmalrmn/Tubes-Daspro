@@ -1,14 +1,16 @@
 from animasi import animasiayam
 from time import  sleep
+from typing import Union, List
 
-def ayam_berkokok(user, idx_usn, candi):
+def ayam_berkokok(user: List[str], idx_usn: int, candi: List[Union[str, int]]) -> None:
   # Menghitung banyak candi
-  banyak_candi = -1
-  for element in candi :
-      if element[0] != None :
-          banyak_candi += 1
-      else :
+  i = 0
+  while True:
+      if candi[i][0] == None:
           break
+      else:
+        i += 1
+  banyak_candi = i -1
   # Sisa candi yang perlu dibangun
   if user[idx_usn][0] == "Roro":
     if banyak_candi <= 99: # jumlah candi <= 99

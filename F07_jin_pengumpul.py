@@ -1,8 +1,9 @@
 from RNG import rand_nums
 from animasi import animasibahan
 from time import sleep
+from typing import List, Union, Tuple
 
-def kumpul(bahan_bangunan, idx_rng, idx_usn, user):
+def kumpul(bahan_bangunan: List[Union[str, int]], idx_rng: int, idx_usn: int, user: List[str]) -> Tuple[List[Union[str, int]], int]:
   if user[idx_usn][2] == "Pengumpul":
     increment = 0
     nama_bahan = [["pasir", 0], ["batu", 0], ["air", 0]]

@@ -1,6 +1,7 @@
 from time import sleep
+from typing import List
 
-def ubahjin(csvlist, idx_usn):
+def ubahjin(csvlist: List[str], idx_usn: int) -> List[str]:
     if csvlist[idx_usn][0] == "Bondowoso":
         username_jin = input('Masukkan username jin : ')
         for i in range (3, 1001):    

@@ -1,8 +1,6 @@
 import csvtolist
 
 def undo(candi, idx_usn, user, bahan_bangunan):
-    arr_file_candi = csvtolist.csv_to_list('candi.csv',101,5)
-    arr_file_user = csvtolist.csv_to_list('user.csv',103,3) 
 
     # fungsi hitung banyak candi yang dibangun oleh jin
     def hitung_candi(arr_file_candi,nama_jin):
@@ -82,8 +80,3 @@ def undo(candi, idx_usn, user, bahan_bangunan):
         print("Program ini hanya dapat di akses oleh bondowoso")
     
     return candi,user
-
-
-        
-
-

@@ -1,16 +1,20 @@
 from time import sleep
+from typing import Union, List, Tuple
 
-def hancurkan_candi(arr_candi, idx_usn, user):
-    arr_candi_baru = arr_candi
+def hancurkan_candi(arr_candi: List[Union[str, int]], idx_usn: int, user: List[str]) -> List[Union[str, int]]:  
     if user[idx_usn][0] == "Roro":
         # Input id candi 
         id_candi = int(input('Masukan ID candi: '))
 
         # Cek apakah ada candi dengan ID tersebut dan declare atas nama valid
         valid = False
-        for candi in arr_candi:
-            if candi[0] == id_candi:
+        i = 0
+        while i < 102:
+            if arr_candi[i][0] == id_candi:
                 valid = True
+                break
+            else:
+                i += 1
         # Algoritma Hancurkan_candi
         if not valid :
             sleep(0.5)
@@ -28,19 +32,9 @@ def hancurkan_candi(arr_candi, idx_usn, user):
                         row_num += 1
                     else :
                         loop = False
-
-                # Membuat array baru tanpa element yang mau dihapus
-                arr_candi_baru = [[None for j in range(5)] for i in range (101)]
-                baris = 0
-                kolom = 0
-                for i in range (101):
-                    kolom = 0
-                    for j in range (5):
-                        if i != row_num :
-                            arr_candi_baru[baris][j] = arr_candi[i][j]
-                            kolom += 1
-                    if i != row_num :
-                        baris += 1
+                for j in range(row_num, 101): # Melakukan penghapusan data yang dimasukkan saat melakukan login
+                    arr_candi[j] = arr_candi[j+1]
+                    arr_candi[101] = [None, None, None, None, None] # list baru tanpa data yg dimasukkan user saat login
                 sleep(0.5)
                 print()
                 print("Candi berhasil dihancurkan")
@@ -51,4 +45,4 @@ def hancurkan_candi(arr_candi, idx_usn, user):
     else:
         sleep(0.5)
         print("Program ini hanya dapat diakses oleh Roro")
-    return arr_candi_baru
+    return arr_candi

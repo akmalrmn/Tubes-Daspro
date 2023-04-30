@@ -1,6 +1,7 @@
 from time import sleep
+from typing import List
 
-def Help(login_status, idx_usn, user):
+def Help(login_status: bool, idx_usn: int, user: List[str]) -> None:
   if login_status == False : # mengacu pada kode di F01 yakni kalau sudah berhasil login maka login = True, kalau belum berhasil login artinya login = False
       sleep(0.5)
       print('''=========== HELP ===========
